@@ -69,7 +69,7 @@ func New(c catalog.Catalog, staticDir string) http.Handler {
 		}
 		writeJSON(w, r, t)
 	})
-	mux.HandleFunc("/api/", func(w http.ResponseWriter, r *http.Request) { fail(w, 404, "not_found", "接口不存在") })
+	mux.HandleFunc("GET /api/", func(w http.ResponseWriter, r *http.Request) { fail(w, 404, "not_found", "接口不存在") })
 	root := os.DirFS(staticDir)
 	files := http.FileServer(http.FS(root))
 	mux.HandleFunc("GET /", func(w http.ResponseWriter, r *http.Request) {
