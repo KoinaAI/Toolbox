@@ -8,6 +8,7 @@ export interface ToolWorkspaceProps {
 type Loader = () => Promise<{ default: ComponentType<ToolWorkspaceProps> }>
 
 const loaders: Record<string, Loader> = {
+  color: () => import('./modules/color'),
   base64: () => import('./modules/base64'),
   'number-base': () => import('./modules/base64').then(module => ({ default: module.NumberBase })),
   'id-card': () => import('./modules/text').then(module => ({ default: module.Identity })),
