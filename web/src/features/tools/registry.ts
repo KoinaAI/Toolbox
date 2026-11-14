@@ -8,6 +8,9 @@ export interface ToolWorkspaceProps {
 type Loader = () => Promise<{ default: ComponentType<ToolWorkspaceProps> }>
 
 const loaders: Record<string, Loader> = {
+  'image-compress': () => import('./modules/images'),
+  'image-convert': () => import('./modules/images'),
+  'image-resize': () => import('./modules/images'),
   dns: () => import('./modules/network'),
   ip: () => import('./modules/network'),
   'http-client': () => import('./modules/network'),

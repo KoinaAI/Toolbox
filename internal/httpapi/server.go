@@ -19,6 +19,7 @@ import (
 func New(c catalog.Catalog, staticDir string) http.Handler {
 	mux := http.NewServeMux()
 	networkRoutes(mux)
+	imageRoutes(mux)
 	writeJSON := func(w http.ResponseWriter, r *http.Request, value any) {
 		payload, err := json.Marshal(value)
 		if err != nil {

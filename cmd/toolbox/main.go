@@ -37,7 +37,7 @@ func main() {
 		slog.Error("invalid catalog", "error", err)
 		os.Exit(1)
 	}
-	server := &http.Server{Addr: addr, Handler: httpapi.New(c, env("STATIC_DIR", "web/dist")), ReadHeaderTimeout: 5 * time.Second, ReadTimeout: 15 * time.Second, WriteTimeout: 30 * time.Second, IdleTimeout: 60 * time.Second, MaxHeaderBytes: 1 << 20}
+	server := &http.Server{Addr: addr, Handler: httpapi.New(c, env("STATIC_DIR", "web/dist")), ReadHeaderTimeout: 5 * time.Second, ReadTimeout: 30 * time.Second, WriteTimeout: 60 * time.Second, IdleTimeout: 60 * time.Second, MaxHeaderBytes: 1 << 20}
 	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
 	defer stop()
 	done := make(chan error, 1)
