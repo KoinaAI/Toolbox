@@ -18,4 +18,8 @@ export interface Tool {
   addedAt: string
   order: number
 }
-export interface Catalog { version: number; categories: Category[]; tools: Tool[] }
+export interface Catalog {
+  version: number
+  categories: Category[]
+  tools: Tool[]
+}
