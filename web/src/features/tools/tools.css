@@ -1,7 +1,7 @@
 .utility-stack {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 24px;
   min-width: 0;
 }
 .utility-field {
@@ -16,8 +16,15 @@
   font-weight: 550;
 }
 .utility-field input,
-.utility-field select {
+.utility-field .select__trigger {
   font-size: 14px;
+}
+.utility-select-options {
+  max-height: min(320px, 50svh);
+  overflow-y: auto;
+}
+.utility-select-popover {
+  max-width: calc(100vw - 32px);
 }
 .utility-textarea {
   min-height: 180px;
@@ -115,27 +122,6 @@
   flex-wrap: wrap;
   gap: 4px;
 }
-.utility-more {
-  position: relative;
-  font-size: 12px;
-}
-.utility-more summary {
-  cursor: pointer;
-  padding: 10px;
-}
-.utility-more-options {
-  position: absolute;
-  z-index: 20;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 3px;
-  background: var(--overlay);
-  padding: 8px;
-  border-radius: 12px;
-  box-shadow: var(--shadow-overlay);
-  width: 200px;
-  right: 0;
-}
 .utility-total {
   display: flex;
   align-items: baseline;
@@ -226,7 +212,13 @@
     grid-template-columns: minmax(0, 1fr);
   }
   .utility-stack {
-    gap: 17px;
+    gap: 20px;
+  }
+  .workspace-card .workspace-content {
+    padding: 20px 16px;
+  }
+  .workspace-card .workspace-heading {
+    padding: 17px 16px;
   }
   .utility-editor {
     height: 320px;

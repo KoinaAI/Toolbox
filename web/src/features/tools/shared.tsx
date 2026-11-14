@@ -1,14 +1,16 @@
-import { useId, useState, type ReactNode } from 'react'
+import { useState, type ReactNode } from 'react'
 import {
   Button,
   Input,
   Label,
+  ListBox,
+  Select,
   Switch,
   TextArea,
   TextField,
 } from '@heroui/react'
-import { NativeSelect } from '@heroui-pro/react/native-select'
 import { toast } from 'sonner'
+import { DateControl } from './date-field'
 
 export function Field({
   label,
@@ -31,6 +33,16 @@ export function Field({
   maxLength?: number
   children?: ReactNode
 }) {
+  if (type === 'date' || type === 'datetime-local')
+    return (
+      <DateControl
+        label={label}
+        value={value}
+        onChange={onChange}
+        includeTime={type === 'datetime-local'}
+        readOnly={readOnly}
+      />
+    )
   return (
     <TextField
       className="utility-field"
@@ -67,24 +79,32 @@ export function SelectField({
   onChange: (value: string) => void
   options: readonly (readonly [string, string])[]
 }) {
-  const id = useId()
   return (
-    <div className="utility-field">
-      <label htmlFor={id}>{label}</label>
-      <NativeSelect variant="secondary" fullWidth>
-        <NativeSelect.Trigger
-          id={id}
-          value={value}
-          onChange={(event) => onChange(event.target.value)}
-        >
+    <Select
+      className="utility-field"
+      variant="secondary"
+      fullWidth
+      value={value}
+      onChange={(key) => {
+        if (key !== null) onChange(String(key))
+      }}
+    >
+      <Label>{label}</Label>
+      <Select.Trigger>
+        <Select.Value />
+        <Select.Indicator />
+      </Select.Trigger>
+      <Select.Popover className="utility-select-popover">
+        <ListBox className="utility-select-options">
           {options.map(([key, title]) => (
-            <NativeSelect.Option key={key} value={key}>
+            <ListBox.Item key={key} id={key} textValue={title}>
               {title}
-            </NativeSelect.Option>
+              <ListBox.ItemIndicator />
+            </ListBox.Item>
           ))}
-        </NativeSelect.Trigger>
-      </NativeSelect>
-    </div>
+        </ListBox>
+      </Select.Popover>
+    </Select>
   )
 }
 

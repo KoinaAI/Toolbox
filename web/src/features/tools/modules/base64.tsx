@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import { Button } from '@heroui/react'
+import { Button, Dropdown } from '@heroui/react'
+import { Icon } from '../../../components/icon'
 import {
   convertInteger,
   decodeBytes,
@@ -50,29 +51,35 @@ export default function BaseEncoding() {
             </Button>
           ))}
         </div>
-        <details className="utility-more">
-          <summary>
+        <Dropdown>
+          <Button variant="ghost" aria-label="选择更多 Base 编码">
             {!['64', '32', '16'].includes(encoding)
               ? `Base${encoding}`
               : '更多编码'}
-          </summary>
-          <div className="utility-more-options">
-            {(['36', '45', '58', '62', '85', '91'] as const).map((base) => (
-              <Button
-                key={base}
-                size="sm"
-                variant={encoding === base ? 'secondary' : 'ghost'}
-                onPress={() => {
-                  setEncoding(base)
-                  setOutput('')
-                  op.setError('')
-                }}
-              >
-                Base{base}
-              </Button>
-            ))}
-          </div>
-        </details>
+            <Icon name="ChevronDown" size={14} />
+          </Button>
+          <Dropdown.Popover placement="bottom end">
+            <Dropdown.Menu
+              aria-label="更多 Base 编码"
+              selectionMode="single"
+              selectedKeys={
+                new Set(['64', '32', '16'].includes(encoding) ? [] : [encoding])
+              }
+              onAction={(key) => {
+                setEncoding(String(key) as Encoding)
+                setOutput('')
+                op.setError('')
+              }}
+            >
+              {(['36', '45', '58', '62', '85', '91'] as const).map((base) => (
+                <Dropdown.Item key={base} id={base} textValue={`Base${base}`}>
+                  Base{base}
+                  <Dropdown.ItemIndicator />
+                </Dropdown.Item>
+              ))}
+            </Dropdown.Menu>
+          </Dropdown.Popover>
+        </Dropdown>
       </div>
       {encoding === '64' && (
         <Toggle label="URL-safe 字符表" value={urlSafe} onChange={setUrlSafe} />

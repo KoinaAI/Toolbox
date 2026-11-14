@@ -211,5 +211,15 @@
       "type": "git",
       "url": "git://github.com/fent/ret.js.git"
     }
+  },
+  {
+    "package": "@internationalized/date",
+    "version": "3.12.4",
+    "license": "Apache-2.0",
+    "file": "internationalized--date.txt",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/adobe/react-spectrum/tree/main/packages/@internationalized/date"
+    }
   }
 ]
