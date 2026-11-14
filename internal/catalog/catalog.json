@@ -158,7 +158,7 @@
         "格式化",
         "校验"
       ],
-      "status": "planned",
+      "status": "available",
       "featured": true,
       "addedAt": "2026-11-14",
       "order": 5
@@ -206,7 +206,7 @@
         "格式化",
         "数据库"
       ],
-      "status": "planned",
+      "status": "available",
       "featured": false,
       "addedAt": "2026-11-14",
       "order": 8

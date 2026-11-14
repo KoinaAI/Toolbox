@@ -8,6 +8,8 @@ export interface ToolWorkspaceProps {
 type Loader = () => Promise<{ default: ComponentType<ToolWorkspaceProps> }>
 
 const loaders: Record<string, Loader> = {
+  json: () => import('./modules/editors'),
+  'sql-format': () => import('./modules/editors'),
   'random': () => import('./modules/generators').then(module => ({ default: module.RandomNumbers })),
   'password': () => import('./modules/generators').then(module => ({ default: module.Password })),
   'uuid': () => import('./modules/generators').then(module => ({ default: module.UUID })),
