@@ -15,4 +15,6 @@ test('mixed language counts use Han characters and Latin words', () => {
   assert.equal(result.han,4); assert.equal(result.latin,2); assert.equal(result.punctuation,3); assert.equal(result.total,6)
   assert.equal(countText('👨‍👩‍👧‍👦').characters,1)
   assert.throws(() => parseJWT('abc.def'))
+  assert.throws(() => parseJWT('eyJhbGciOiJub25lIn0.e30.AA'))
+  assert.equal(countText('你好\r\r世界').paragraphs,2)
 })

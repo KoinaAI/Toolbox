@@ -16,6 +16,8 @@ test('RFC encodings and nonstandard variants preserve byte boundaries', () => {
   assert.throws(() => decodeBytes('!', '85'))
   assert.throws(() => decodeBytes('~~~~~', '85'))
   assert.throws(() => decodeBytes(' a', '91'))
+  assert.equal(encodeBytes(new Uint8Array(8192),'58'),'1'.repeat(8192))
+  assert.equal(decodeBytes('1'.repeat(8192),'58').length,8192)
 })
 
 test('integer conversion preserves precision and validates every digit', () => {

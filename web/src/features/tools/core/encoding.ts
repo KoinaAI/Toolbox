@@ -1,4 +1,4 @@
-import { base16, base32, base32nopad, base58, base64, base64nopad, base64url, base64urlnopad } from '@scure/base'
+import { base16, base32, base32nopad, base64, base64nopad, base64url, base64urlnopad } from '@scure/base'
 
 export const ENCODINGS = ['64', '32', '16', '36', '45', '58', '62', '85', '91'] as const
 export type Encoding = typeof ENCODINGS[number]
@@ -6,6 +6,7 @@ const B45 = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ $%*+-./:'
 const B91 = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!#$%&()*+,./:;<=>?@[]^_`{|}~"'
 const B36 = '0123456789abcdefghijklmnopqrstuvwxyz'
 const B62 = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
+const B58 = '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz'
 
 function radixEncode(bytes: Uint8Array, alphabet: string): string {
   let zeroes = 0, value = 0n
@@ -135,7 +136,7 @@ export function encodeBytes(bytes: Uint8Array, encoding: Encoding, urlSafe = fal
     case '16': return base16.encode(bytes)
     case '32': return base32.encode(bytes)
     case '64': return (urlSafe ? base64url : base64).encode(bytes)
-    case '58': return base58.encode(bytes)
+    case '58': return radixEncode(bytes, B58)
     case '36': return radixEncode(bytes, B36)
     case '62': return radixEncode(bytes, B62)
     case '45': return encode45(bytes)
@@ -149,7 +150,7 @@ export function decodeBytes(text: string, encoding: Encoding, urlSafe = false): 
     case '16': return base16.decode(text.replace(/\s/g, '').toUpperCase())
     case '32': { const input = text.replace(/\s/g, '').toUpperCase(); return (input.includes('=') ? base32 : base32nopad).decode(input) }
     case '64': { const input = text.replace(/\s/g, ''); return (urlSafe ? (input.includes('=') ? base64url : base64urlnopad) : (input.includes('=') ? base64 : base64nopad)).decode(input) }
-    case '58': return base58.decode(text)
+    case '58': return radixDecode(text, B58)
     case '36': return radixDecode(text.toLowerCase(), B36)
     case '62': return radixDecode(text, B62)
     case '45': return decode45(text)

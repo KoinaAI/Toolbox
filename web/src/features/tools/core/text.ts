@@ -33,6 +33,7 @@ export function parseJWT(raw: string) {
   const header = decode(parts[0]), payload = decode(parts[1])
   if (typeof header.alg !== 'string' || !header.alg) throw new Error('Header 缺少 alg 算法标识')
   if (!/^[\w-]*$/.test(parts[2])) throw new Error('签名段包含无效字符')
+  if (header.alg === 'none' && parts[2]) throw new Error('alg=none 时签名段必须为空')
   if (parts[2]) base64urlnopad.decode(parts[2])
   return { header, payload, signature: parts[2] }
 }
@@ -53,5 +54,5 @@ export function countText(text: string) {
     else if (/^\p{N}+$/u.test(segment)) numbers++
     else other++
   }
-  return { han, latin, other, numbers, punctuation, total: han + latin + other + numbers, characters: graphemes.length, nonWhitespace: graphemes.filter(({segment}) => !/^\s+$/u.test(segment)).length, lines: text ? text.split(/\r\n|\r|\n/).length : 0, paragraphs: text.trim() ? text.trim().split(/(?:\r?\n\s*){2,}/).length : 0, bytes: new TextEncoder().encode(text).length }
+  return { han, latin, other, numbers, punctuation, total: han + latin + other + numbers, characters: graphemes.length, nonWhitespace: graphemes.filter(({segment}) => !/^\s+$/u.test(segment)).length, lines: text ? text.split(/\r\n|\r|\n/).length : 0, paragraphs: text.trim() ? text.trim().replace(/\r\n?/g,'\n').split(/\n\s*\n/).length : 0, bytes: new TextEncoder().encode(text).length }
 }
