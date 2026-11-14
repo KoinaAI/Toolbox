@@ -24,4 +24,3 @@ test('integer conversion preserves precision and validates every digit', () => {
   assert.throws(() => convertInteger('102',2,10))
   assert.throws(() => convertInteger('10',1.5,10))
 })
-

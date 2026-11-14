@@ -222,7 +222,7 @@
         "token",
         "认证"
       ],
-      "status": "planned",
+      "status": "available",
       "featured": false,
       "addedAt": "2026-11-14",
       "order": 9
@@ -254,7 +254,7 @@
         "字符",
         "统计"
       ],
-      "status": "planned",
+      "status": "available",
       "featured": false,
       "addedAt": "2026-11-14",
       "order": 11
@@ -710,6 +710,22 @@
       "featured": false,
       "addedAt": "2026-11-14",
       "order": 39
+    },
+    {
+      "id": "id-card",
+      "categoryId": "everyday",
+      "title": "身份证号校验",
+      "shortDesc": "校验末位校验码，可选解析地址码、生日与性别",
+      "icon": "Shield",
+      "tags": [
+        "身份证",
+        "校验",
+        "身份信息"
+      ],
+      "status": "available",
+      "featured": false,
+      "addedAt": "2026-11-14",
+      "order": 410
     }
   ]
 }

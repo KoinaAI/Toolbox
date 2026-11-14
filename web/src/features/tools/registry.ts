@@ -10,6 +10,9 @@ type Loader = () => Promise<{ default: ComponentType<ToolWorkspaceProps> }>
 const loaders: Record<string, Loader> = {
   base64: () => import('./modules/base64'),
   'number-base': () => import('./modules/base64').then(module => ({ default: module.NumberBase })),
+  'id-card': () => import('./modules/text').then(module => ({ default: module.Identity })),
+  jwt: () => import('./modules/text').then(module => ({ default: module.JWT })),
+  'word-count': () => import('./modules/text').then(module => ({ default: module.WordCount })),
 }
 const modules = new Map<
   string,
