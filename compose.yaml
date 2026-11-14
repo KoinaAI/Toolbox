@@ -1,7 +1,7 @@
 name: toolbox
 services:
   toolbox:
-    image: ${TOOLBOX_IMAGE:-ghcr.io/koinaai/toolbox:0.2.0}
+    image: ${TOOLBOX_IMAGE:-ghcr.io/koinaai/toolbox:0.2.1}
     restart: unless-stopped
     init: true
     ports:
