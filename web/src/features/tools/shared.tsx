@@ -132,15 +132,18 @@ export function Toggle({
 export function Notice({
   children,
   error = false,
+  tone = 'neutral',
 }: {
   children: ReactNode
   error?: boolean
+  tone?: 'neutral' | 'success' | 'error'
 }) {
   if (!children) return null
+  const status = error ? 'error' : tone
   return (
     <p
-      className={`utility-notice ${error ? 'utility-error' : ''}`}
-      role={error ? 'alert' : 'status'}
+      className={`utility-notice utility-${status}`}
+      role={status === 'error' ? 'alert' : 'status'}
     >
       {children}
     </p>

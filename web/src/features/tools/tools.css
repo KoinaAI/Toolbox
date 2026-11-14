@@ -57,8 +57,17 @@
   white-space: pre-wrap;
   overflow-wrap: anywhere;
 }
-.utility-error {
-  color: var(--danger);
+.utility-success,
+.utility-http-status[data-family='2'] {
+  color: var(--success-soft-foreground);
+}
+.utility-error,
+.utility-http-status[data-family='4'],
+.utility-http-status[data-family='5'] {
+  color: var(--danger-soft-foreground);
+}
+.utility-http-status[data-family='3'] {
+  color: var(--warning-soft-foreground);
 }
 .utility-result {
   min-width: 0;

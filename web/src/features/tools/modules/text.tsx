@@ -65,7 +65,7 @@ export function Identity() {
       <Notice error>{op.error}</Notice>
       {result && (
         <>
-          <Notice error={!result.valid}>
+          <Notice tone={result.valid ? 'success' : 'error'}>
             {result.valid
               ? '校验通过：末位校验码符合 MOD 11-2 规则。'
               : `校验未通过：末位应为 ${result.expected}，当前为 ${result.actual}。`}

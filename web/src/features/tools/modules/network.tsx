@@ -200,7 +200,15 @@ export default function Network({ tool }: ToolWorkspaceProps) {
         <>
           <KeyValues
             values={[
-              ['状态', http.statusText],
+              [
+                '状态',
+                <span
+                  className="utility-http-status"
+                  data-family={Math.floor(http.status / 100)}
+                >
+                  {http.statusText}
+                </span>,
+              ],
               ['耗时', `${http.durationMs} ms`],
               ['响应编码', http.encoding],
               ['内容截断', http.truncated ? '是，最多展示 1 MiB' : '否'],

@@ -182,7 +182,12 @@ export function HTTPStatus() {
           <tbody>
             {items.map((item) => (
               <tr key={item.code}>
-                <td className="utility-code">{item.code}</td>
+                <td
+                  className="utility-code utility-http-status"
+                  data-family={Math.floor(item.code / 100)}
+                >
+                  {item.code}
+                </td>
                 <td>{item.reason}</td>
                 <td>{item.description}</td>
               </tr>

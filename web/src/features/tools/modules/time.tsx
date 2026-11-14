@@ -369,7 +369,9 @@ export function Cron() {
         </Button>
       </div>
       <Notice error>{op.error}</Notice>
-      {description && <Notice>{description}</Notice>}
+      {!op.error && !op.busy && description && (
+        <Notice tone="success">{description}</Notice>
+      )}
       <Result label="接下来 10 次执行时间" value={result} />
       <Notice>
         支持 *、范围、步长和列表；周日为 0 或 7。日期与星期同时受限时采用
