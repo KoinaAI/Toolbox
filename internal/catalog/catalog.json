@@ -561,7 +561,7 @@
         "unix",
         "时间戳"
       ],
-      "status": "planned",
+      "status": "available",
       "featured": true,
       "addedAt": "2026-11-14",
       "order": 30
@@ -577,7 +577,7 @@
         "天数",
         "差值"
       ],
-      "status": "planned",
+      "status": "available",
       "featured": false,
       "addedAt": "2026-11-14",
       "order": 31
@@ -593,7 +593,7 @@
         "timezone",
         "utc"
       ],
-      "status": "planned",
+      "status": "available",
       "featured": false,
       "addedAt": "2026-11-14",
       "order": 32
@@ -609,7 +609,7 @@
         "定时",
         "计划"
       ],
-      "status": "planned",
+      "status": "available",
       "featured": false,
       "addedAt": "2026-11-14",
       "order": 33

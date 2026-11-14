@@ -8,6 +8,11 @@ export interface ToolWorkspaceProps {
 type Loader = () => Promise<{ default: ComponentType<ToolWorkspaceProps> }>
 
 const loaders: Record<string, Loader> = {
+  'timestamp': () => import('./modules/time').then(module => ({ default: module.Timestamp })),
+  'date-diff': () => import('./modules/time').then(module => ({ default: module.DateCalculator })),
+  'timezone': () => import('./modules/time').then(module => ({ default: module.Timezone })),
+  'cron': () => import('./modules/time').then(module => ({ default: module.Cron })),
+
   color: () => import('./modules/color'),
   base64: () => import('./modules/base64'),
   'number-base': () => import('./modules/base64').then(module => ({ default: module.NumberBase })),
