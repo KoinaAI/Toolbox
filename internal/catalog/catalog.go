@@ -8,6 +8,7 @@ import (
 	"fmt"
 	"io"
 	"regexp"
+	"sort"
 	"strings"
 	"time"
 )
@@ -85,6 +86,8 @@ func Load(data []byte) (Catalog, error) {
 		}
 		tools[tool.ID] = true
 	}
+	sort.SliceStable(c.Categories, func(i, j int) bool { return c.Categories[i].Order < c.Categories[j].Order })
+	sort.SliceStable(c.Tools, func(i, j int) bool { return c.Tools[i].Order < c.Tools[j].Order })
 	return c, nil
 }
 

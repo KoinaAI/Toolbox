@@ -16,6 +16,8 @@ func TestDirectoryHTTPContract(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
+	jsonTool, _ := c.Find("json")
+	c.Tools = []catalog.Tool{jsonTool}
 	dir := t.TempDir()
 	if err := os.WriteFile(filepath.Join(dir, "index.html"), []byte("toolbox-app"), 0600); err != nil {
 		t.Fatal(err)
