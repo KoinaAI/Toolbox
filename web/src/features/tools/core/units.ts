@@ -151,7 +151,11 @@ export function convertUnit(
   const base = value * from.factor + (from.offset || 0)
   if (groupId === 'temperature' && base < -1e-10)
     throw new Error('温度不能低于绝对零度')
-  const result = (base - (to.offset || 0)) / to.factor
+  // Divide scale factors before multiplying so finite conversions do not
+  // overflow through the canonical unit (for example 1e308 km → km).
+  const result =
+    value * (from.factor / to.factor) +
+    ((from.offset || 0) - (to.offset || 0)) / to.factor
   if (!Number.isFinite(result)) throw new Error('结果超出数值范围')
-  return Math.abs(result) < Number.EPSILON ? 0 : result
+  return Object.is(result, -0) ? 0 : result
 }

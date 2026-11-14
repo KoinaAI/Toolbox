@@ -180,8 +180,7 @@ export function NumberBase() {
       <div className="utility-actions">
         <Button
           onPress={() =>
-            op.run(async () => {
-              const { convertInteger } = await import('../core/encoding')
+            op.run(() => {
               setOutput(
                 convertInteger(
                   input,
