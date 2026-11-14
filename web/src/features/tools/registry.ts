@@ -7,8 +7,10 @@ export interface ToolWorkspaceProps {
 }
 type Loader = () => Promise<{ default: ComponentType<ToolWorkspaceProps> }>
 
-// Add an explicit lazy import here when an implementation is ready. No module is executable yet.
-const loaders: Record<string, Loader> = {}
+const loaders: Record<string, Loader> = {
+  base64: () => import('./modules/base64'),
+  'number-base': () => import('./modules/base64').then(module => ({ default: module.NumberBase })),
+}
 const modules = new Map<
   string,
   LazyExoticComponent<ComponentType<ToolWorkspaceProps>>

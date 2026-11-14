@@ -17,6 +17,9 @@
     "node": ">=24.0.0"
   },
   "overrides": {
-    "figlet": "1.11.3"
+    "figlet": "1.11.3",
+    "monaco-editor": {
+      "dompurify": "3.4.17"
+    }
   }
 }
