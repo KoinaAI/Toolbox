@@ -180,23 +180,6 @@ export function AppShell() {
         event.preventDefault()
         setCommandOpen((previous) => !previous)
       }
-      const target = event.target as HTMLElement
-      const editing =
-        target.isContentEditable ||
-        ['INPUT', 'TEXTAREA', 'SELECT'].includes(target.tagName)
-      if (
-        event.key === '/' &&
-        !editing &&
-        !event.metaKey &&
-        !event.ctrlKey &&
-        !event.altKey
-      ) {
-        event.preventDefault()
-        const search =
-          document.querySelector<HTMLInputElement>('#catalog-search')
-        if (search) search.focus()
-        else setCommandOpen(true)
-      }
     }
     window.addEventListener('keydown', handle)
     return () => window.removeEventListener('keydown', handle)

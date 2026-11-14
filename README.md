@@ -6,7 +6,7 @@
 
 - 分类浏览、关键词搜索、编辑精选与排序。
 - 收藏、最近打开、卡片 / 列表视图，保存在当前浏览器。
-- `⌘ / Ctrl K` 命令面板、`/` 聚焦搜索。
+- `⌘ / Ctrl K` 命令面板。
 - 浅色 / 深色 / 系统主题、移动端分类抽屉。
 - 独立工具工作区、惰性模块注册表与错误隔离。
 - Go 同源 API 与静态托管、Docker Compose、GHCR 镜像。
@@ -15,7 +15,7 @@
 
 React 19 + TypeScript + Vite（Node.js 构建），HeroUI v3 + HeroUI Pro，Tailwind CSS v4，shadcn/ui 风格的 Radix 控件，Motion、Sonner、Iconify；后端使用 Go 标准库。
 
-实际使用的 Pro 组件包含 Sidebar、Command、Segment、ItemCard、EmptyState 和 NativeSelect；基础表单、开关、按钮、卡片与提示来自 HeroUI。Monaco 及其 Worker 由本站打包加载，不依赖 CDN；正则与格式化在可终止的独立 Worker 内执行。
+实际使用的 Pro 组件包含 Sidebar、Command、Segment、ItemCard 和 EmptyState；选择框、日历、基础表单、开关、按钮、卡片与提示来自 HeroUI。Monaco 及其 Worker 由本站打包加载，不依赖 CDN；正则与格式化在可终止的独立 Worker 内执行。
 
 ## 开始使用
 

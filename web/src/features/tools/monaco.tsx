@@ -26,22 +26,31 @@ export default function CodeEditor({
   language,
   readOnly = false,
   label,
+  tabSize = 2,
 }: {
   value: string
   onChange?: (value: string) => void
   language: 'json' | 'sql'
   readOnly?: boolean
   label: string
+  tabSize?: number
 }) {
   const element = useRef<HTMLDivElement>(null),
     editor = useRef<monaco.editor.IStandaloneCodeEditor | null>(null),
     onChangeRef = useRef(onChange),
-    valueRef = useRef(value)
+    valueRef = useRef(value),
+    tabSizeRef = useRef(tabSize)
   onChangeRef.current = onChange
   valueRef.current = value
+  tabSizeRef.current = tabSize
   useEffect(() => {
     if (!element.current) return
     const model = monaco.editor.createModel(valueRef.current, language)
+    model.updateOptions({
+      tabSize: tabSizeRef.current,
+      indentSize: tabSizeRef.current,
+      insertSpaces: true,
+    })
     const instance = monaco.editor.create(element.current, {
       model,
       readOnly,
@@ -53,12 +62,16 @@ export default function CodeEditor({
       scrollBeyondLastLine: false,
       padding: { top: 14, bottom: 14 },
       ariaLabel: label,
-      tabSize: 2,
+      tabSize: tabSizeRef.current,
+      insertSpaces: true,
+      detectIndentation: false,
       renderLineHighlight: 'none',
       fixedOverflowWidgets: true,
       stickyScroll: { enabled: false },
     })
     editor.current = instance
+    // Keep Monaco's command launcher out of this focused formatting workspace.
+    instance.addCommand(monaco.KeyCode.F1, () => {})
     const listener = instance.onDidChangeModelContent(() =>
       onChangeRef.current?.(instance.getValue()),
     )
@@ -84,5 +97,12 @@ export default function CodeEditor({
     if (editor.current && editor.current.getValue() !== value)
       editor.current.setValue(value)
   }, [value])
+  useEffect(() => {
+    editor.current?.getModel()?.updateOptions({
+      tabSize,
+      indentSize: tabSize,
+      insertSpaces: true,
+    })
+  }, [tabSize])
   return <div ref={element} className="utility-editor" />
 }

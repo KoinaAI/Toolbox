@@ -110,6 +110,7 @@ export default function Formatter({ tool }: ToolWorkspaceProps) {
         value={input}
         onChange={setInput}
         language={json ? 'json' : 'sql'}
+        tabSize={Number(indent)}
       />
       <div className="utility-actions">
         <Button isPending={op.busy} onPress={() => run()}>
@@ -144,6 +145,7 @@ export default function Formatter({ tool }: ToolWorkspaceProps) {
         label={`${json ? 'JSON' : 'SQL'} 输出编辑器`}
         value={output}
         language={json ? 'json' : 'sql'}
+        tabSize={Number(indent)}
         readOnly
       />
       <Notice>
