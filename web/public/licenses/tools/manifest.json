@@ -1,0 +1,225 @@
+[
+  {
+    "package": "@scure/base",
+    "version": "2.4.0",
+    "license": "MIT",
+    "file": "scure--base.txt",
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/paulmillr/scure-base.git"
+    }
+  },
+  {
+    "package": "@js-temporal/polyfill",
+    "version": "0.5.1",
+    "license": "ISC",
+    "file": "js-temporal--polyfill.txt",
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/js-temporal/temporal-polyfill.git"
+    }
+  },
+  {
+    "package": "culori",
+    "version": "4.0.2",
+    "license": "MIT",
+    "file": "culori.txt",
+    "repository": "git@github.com:Evercoder/culori.git"
+  },
+  {
+    "package": "cron-parser",
+    "version": "5.10.5",
+    "license": "MIT",
+    "file": "cron-parser.txt",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/harrisiirak/cron-parser.git"
+    }
+  },
+  {
+    "package": "cronstrue",
+    "version": "3.39.0",
+    "license": "MIT",
+    "file": "cronstrue.txt",
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/bradymholt/cRonstrue.git"
+    }
+  },
+  {
+    "package": "monaco-editor",
+    "version": "0.57.0",
+    "license": "MIT",
+    "file": "monaco-editor.txt",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/microsoft/monaco-editor"
+    }
+  },
+  {
+    "package": "sql-formatter",
+    "version": "15.9.0",
+    "license": "MIT",
+    "file": "sql-formatter.txt",
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/sql-formatter-org/sql-formatter.git"
+    }
+  },
+  {
+    "package": "jsonc-parser",
+    "version": "3.3.1",
+    "license": "MIT",
+    "file": "jsonc-parser.txt",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/microsoft/node-jsonc-parser"
+    }
+  },
+  {
+    "package": "uuid",
+    "version": "14.0.3",
+    "license": "MIT",
+    "file": "uuid.txt",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/uuidjs/uuid.git"
+    }
+  },
+  {
+    "package": "@vant/area-data",
+    "version": "2.2.0",
+    "license": "MIT",
+    "file": "vant--area-data.txt",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/vant-ui/vant.git",
+      "directory": "packages/vant-area-data"
+    }
+  },
+  {
+    "package": "bowser",
+    "version": "2.13.1",
+    "license": "MIT",
+    "file": "bowser.txt",
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/lancedikson/bowser.git"
+    }
+  },
+  {
+    "package": "@eslint-community/regexpp",
+    "version": "4.12.3",
+    "license": "MIT",
+    "file": "eslint-community--regexpp.txt",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/eslint-community/regexpp"
+    }
+  },
+  {
+    "package": "jsbi",
+    "version": "4.3.2",
+    "license": "Apache-2.0",
+    "file": "jsbi.txt",
+    "repository": "GoogleChromeLabs/jsbi"
+  },
+  {
+    "package": "luxon",
+    "version": "3.7.2",
+    "license": "MIT",
+    "file": "luxon.txt",
+    "repository": "https://github.com/moment/luxon"
+  },
+  {
+    "package": "marked",
+    "version": "14.0.0",
+    "license": "MIT",
+    "file": "marked.txt",
+    "repository": "git://github.com/markedjs/marked.git"
+  },
+  {
+    "package": "dompurify",
+    "version": "3.4.17",
+    "license": "(MPL-2.0 OR Apache-2.0)",
+    "file": "dompurify.txt",
+    "repository": {
+      "type": "git",
+      "url": "git://github.com/cure53/DOMPurify.git"
+    }
+  },
+  {
+    "package": "argparse",
+    "version": "2.0.1",
+    "license": "Python-2.0",
+    "file": "argparse.txt",
+    "repository": "nodeca/argparse"
+  },
+  {
+    "package": "nearley",
+    "version": "2.20.1",
+    "license": "MIT",
+    "file": "nearley.txt",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/hardmath123/nearley.git"
+    }
+  },
+  {
+    "package": "commander",
+    "version": "14.0.3",
+    "license": "MIT",
+    "file": "commander.txt",
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/tj/commander.js.git"
+    }
+  },
+  {
+    "package": "moo",
+    "version": "0.5.3",
+    "license": "BSD-3-Clause",
+    "file": "moo.txt",
+    "repository": "https://github.com/tjvr/moo.git"
+  },
+  {
+    "package": "randexp",
+    "version": "0.4.6",
+    "license": "MIT",
+    "file": "randexp.txt",
+    "repository": {
+      "type": "git",
+      "url": "git://github.com/fent/randexp.js.git"
+    }
+  },
+  {
+    "package": "discontinuous-range",
+    "version": "1.0.0",
+    "license": "MIT",
+    "file": "discontinuous-range.txt",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/dtudury/discontinuous-range.git"
+    }
+  },
+  {
+    "package": "ret",
+    "version": "0.1.15",
+    "license": "MIT",
+    "file": "ret.txt",
+    "repository": {
+      "type": "git",
+      "url": "git://github.com/fent/ret.js.git"
+    }
+  },
+  {
+    "package": "@internationalized/date",
+    "version": "3.12.4",
+    "license": "Apache-2.0",
+    "file": "internationalized--date.txt",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/adobe/react-spectrum/tree/main/packages/@internationalized/date"
+    }
+  }
+]

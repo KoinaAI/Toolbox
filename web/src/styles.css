@@ -1,6 +1,7 @@
 @import 'tailwindcss';
 @import '@heroui/styles';
 @import '@heroui-pro/react/css';
+@import './features/tools/tools.css';
 
 @custom-variant dark (&:where(.dark, .dark *));
 @theme inline {
@@ -238,8 +239,7 @@ button:focus-visible {
   position: sticky;
   top: 0;
   z-index: 30;
-  background: color-mix(in oklch, var(--background) 92%, transparent);
-  backdrop-filter: blur(16px);
+  background: var(--background);
   border-bottom: 1px solid color-mix(in oklch, var(--border) 55%, transparent);
 }
 .breadcrumb-home {
@@ -1103,6 +1103,7 @@ button:focus-visible {
 .workspace-card {
   padding: 0;
   border-radius: 15px;
+  gap: 0;
 }
 .workspace-heading {
   flex-direction: row;
@@ -1119,73 +1120,9 @@ button:focus-visible {
   font-size: 9px;
 }
 .workspace-content {
-  padding: 0;
+  padding: 24px;
 }
-.planned-workspace {
-  min-height: 355px;
-  padding: 40px 25px 33px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 13px;
-}
-.planned-graphic {
-  width: 72px;
-  height: 72px;
-  border-radius: 23px;
-  background: var(--accent-soft);
-  color: var(--accent-soft-foreground);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  margin-bottom: 5px;
-}
-.planned-graphic > span {
-  position: absolute;
-  right: -5px;
-  bottom: -3px;
-  background: var(--surface);
-  box-shadow: var(--shadow-surface);
-  width: 26px;
-  height: 26px;
-  border-radius: 9px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--muted);
-}
-.planned-workspace > .chip {
-  font-size: 9px;
-  height: 21px;
-  min-height: 0;
-}
-.planned-workspace h2 {
-  font-size: 22px;
-  font-weight: 600;
-  letter-spacing: -0.6px;
-  margin-top: 1px;
-}
-.planned-workspace p {
-  color: var(--muted);
-  font-size: 11px;
-  line-height: 1.95;
-  margin-bottom: 6px;
-}
-.planned-workspace > button {
-  font-size: 11px;
-}
-.back-to-explore {
-  font-size: 10px;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  color: var(--muted);
-}
-.back-to-explore:hover {
-  color: var(--accent);
-}
+
 .tool-aside {
   min-width: 0;
   padding-top: 8px;
@@ -1242,26 +1179,7 @@ button:focus-visible {
   color: var(--accent-soft-foreground);
   font-size: 11px;
 }
-.tool-info-tabs {
-  margin-top: 27px;
-}
-.tool-info-tabs .tabs__tab {
-  font-size: 12px;
-}
-.tool-info-tabs .tabs__panel {
-  padding: 21px 0 0;
-}
-.tool-info-tabs h2 {
-  font-weight: 550;
-  font-size: 14px;
-  margin-bottom: 13px;
-}
-.tool-info-tabs p {
-  font-size: 12px;
-  color: var(--muted);
-  line-height: 1.95;
-  margin-bottom: 10px;
-}
+
 .tool-tags {
   display: flex;
   flex-wrap: wrap;
@@ -1271,13 +1189,7 @@ button:focus-visible {
 .tool-tags .chip {
   font-size: 10px;
 }
-.tool-info-tabs .accordion__trigger {
-  font-size: 12px;
-}
-.tool-info-tabs .accordion__panel {
-  font-size: 11px;
-  color: var(--muted);
-}
+
 .related-tools {
   margin-top: 44px;
 }
@@ -1823,19 +1735,7 @@ button:focus-visible {
     width: 100%;
     margin-top: 0;
   }
-  .planned-workspace {
-    padding: 33px 15px 28px;
-    min-height: 350px;
-  }
-  .planned-workspace h2 {
-    font-size: 20px;
-  }
-  .planned-workspace p {
-    font-size: 10px;
-  }
-  .tool-info-tabs p {
-    font-size: 11px;
-  }
+
   .related-tools .tools-grid {
     grid-template-columns: 1fr;
   }

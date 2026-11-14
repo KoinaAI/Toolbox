@@ -138,7 +138,7 @@ function SidebarContents() {
               <Icon name="Info" size={17} />
             </Sidebar.MenuIcon>
             <Sidebar.MenuLabel>关于工具箱</Sidebar.MenuLabel>
-            <span className="nav-version">v0.1</span>
+            <span className="nav-version">v0.2</span>
           </Sidebar.MenuItem>
         </Sidebar.Menu>
       </Sidebar.Footer>
@@ -179,23 +179,6 @@ export function AppShell() {
       if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'k') {
         event.preventDefault()
         setCommandOpen((previous) => !previous)
-      }
-      const target = event.target as HTMLElement
-      const editing =
-        target.isContentEditable ||
-        ['INPUT', 'TEXTAREA', 'SELECT'].includes(target.tagName)
-      if (
-        event.key === '/' &&
-        !editing &&
-        !event.metaKey &&
-        !event.ctrlKey &&
-        !event.altKey
-      ) {
-        event.preventDefault()
-        const search =
-          document.querySelector<HTMLInputElement>('#catalog-search')
-        if (search) search.focus()
-        else setCommandOpen(true)
       }
     }
     window.addEventListener('keydown', handle)

@@ -19,16 +19,16 @@ ARG TARGETOS=linux
 ARG TARGETARCH
 RUN CGO_ENABLED=0 GOOS=${TARGETOS} GOARCH=${TARGETARCH} go build -trimpath -ldflags='-s -w' -o /toolbox ./cmd/toolbox
 
-FROM scratch AS runtime
+FROM alpine:3.24@sha256:f59abe656b692d901e184be3445e084786602108599d2a51d229c0f5a48c71bf AS runtime
+RUN apk add --no-cache ffmpeg=8.1.3-r0 ca-certificates
 ARG VCS_REF=unknown
 LABEL org.opencontainers.image.title="Toolbox" \
       org.opencontainers.image.description="An extensible tool directory with a React frontend and Go API" \
       org.opencontainers.image.source="https://github.com/KoinaAI/Toolbox" \
       org.opencontainers.image.revision="${VCS_REF}"
 COPY --from=backend /toolbox /toolbox
-COPY --from=backend /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
 COPY --from=frontend /src/web/dist /app/web
-ENV LISTEN_ADDR=:8080 STATIC_DIR=/app/web
+ENV LISTEN_ADDR=:8080 STATIC_DIR=/app/web TMPDIR=/tmp
 USER 65532:65532
 EXPOSE 8080
 HEALTHCHECK --interval=30s --timeout=4s --start-period=5s --retries=3 CMD ["/toolbox", "-healthcheck"]

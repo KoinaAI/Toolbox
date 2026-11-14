@@ -46,12 +46,12 @@ export function AboutPage() {
           {
             icon: 'Heart',
             title: '少一点打扰',
-            text: '无需注册即可浏览目录。没有虚构的使用量，也不把待接入功能当作已上线。',
+            text: '无需注册即可使用。输入和结果不会被作为个人历史保存。',
           },
           {
             icon: 'Layers',
             title: '小步前进，持续生长',
-            text: '每个工具都可以独立接入。先把箱子做好，再把真正好用的工具装进来。',
+            text: '每个工具独立加载，按需使用；编码、格式化、查询和图片处理各有自己的工作区。',
           },
         ].map((item) => (
           <Card key={item.title} className="about-value">
@@ -79,9 +79,7 @@ export function AboutPage() {
           <Accordion.Panel>
             可以浏览分类与工具、搜索、收藏、查看最近打开记录、切换卡片或列表视图，以及通过
             ⌘ / Ctrl K 快速查找。
-            {availableCount
-              ? `目前有 ${availableCount} 个工具已接入实际功能，其余工作区会明确标记待接入。`
-              : '实际的转换、计算、生成等功能暂未实现，所有工作区均会明确说明状态。'}
+            {`目前提供 ${availableCount ?? 0} 个实际可用的工具，全部通过独立工作区使用。`}
           </Accordion.Panel>
         </Accordion.Item>
         <Accordion.Item id="data">
@@ -93,8 +91,9 @@ export function AboutPage() {
           </Accordion.Heading>
           <Accordion.Panel>
             当前没有账号系统或云端个人数据。收藏、最近记录、显示方式与主题偏好使用浏览器
-            localStorage 保存；请求目录时只访问同源
-            API。清理站点数据会一并清除本地偏好。
+            localStorage
+            保存。文本类工具在浏览器内处理；网络查询和图片处理会访问本站
+            API，并在工作区说明第三方服务与临时文件行为。清理站点数据会一并清除本地偏好。
           </Accordion.Panel>
         </Accordion.Item>
         <Accordion.Item id="open">

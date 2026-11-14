@@ -1,6 +1,6 @@
 import { Suspense, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { Accordion, Button, Card, Chip, Skeleton, Tabs } from '@heroui/react'
+import { Button, Card, Chip, Skeleton } from '@heroui/react'
 import { ItemCard } from '@heroui-pro/react/item-card'
 import { toast } from 'sonner'
 import { useApp } from '../../lib/providers'
@@ -34,6 +34,14 @@ export function ToolPage() {
   const category = catalog.categories.find((c) => c.id === tool.categoryId)!
   const saved = favorites.includes(tool.id)
   const Module = getToolModule(tool.id)
+  const serverSide = [
+    'dns',
+    'ip',
+    'http-client',
+    'image-compress',
+    'image-convert',
+    'image-resize',
+  ].includes(tool.id)
   const available = isToolAvailable(tool)
   const related = catalog.tools
     .filter((t) => t.categoryId === category.id && t.id !== tool.id)
@@ -81,12 +89,8 @@ export function ToolPage() {
           <Card className="workspace-card">
             <Card.Header className="workspace-heading">
               <Card.Title>工作区</Card.Title>
-              <Chip
-                size="sm"
-                variant="soft"
-                color={available ? 'success' : 'default'}
-              >
-                {available ? '已接入' : '待接入'}
+              <Chip size="sm" variant="soft" color="default">
+                {serverSide ? '服务器处理' : '浏览器内处理'}
               </Chip>
             </Card.Header>
             <Card.Content className="workspace-content">
@@ -99,110 +103,16 @@ export function ToolPage() {
                   </Suspense>
                 </ErrorBoundary>
               ) : (
-                <div className="planned-workspace">
-                  <div className="planned-graphic">
-                    <Icon name={tool.icon} size={32} />
-                    <span>
-                      <Icon name="Clock3" size={14} />
-                    </span>
-                  </div>
-                  <Chip size="sm" variant="soft">
-                    已经安排，敬请期待
-                  </Chip>
-                  <h2>好工具，值得认真打磨。</h2>
-                  <p>
-                    这里将是「{tool.title}」的专属工作区。
-                    <br />
-                    当前已完成页面与目录，具体功能尚未接入。
-                  </p>
-                  <Button
-                    variant="secondary"
-                    onPress={() => {
-                      if (!saved) toggleFavorite(tool.id)
-                      toast.success('已加入收藏，方便下次找到它')
-                    }}
-                  >
-                    <Icon name="Star" size={16} />
-                    {saved ? '已在我的收藏中' : '先收藏，留着下次用'}
-                  </Button>
-                  <Link
-                    to={`/category/${category.id}`}
-                    className="back-to-explore"
-                  >
-                    看看同类工具 <Icon name="ArrowRight" size={14} />
-                  </Link>
-                </div>
+                <BlankState
+                  icon="Unplug"
+                  title="工具暂时不可用"
+                  description="工具模块未能加载，请刷新页面重试。"
+                  action="刷新"
+                  onAction={() => window.location.reload()}
+                />
               )}
             </Card.Content>
           </Card>
-          <Tabs
-            aria-label="工具说明"
-            className="tool-info-tabs"
-            defaultSelectedKey="intro"
-          >
-            <Tabs.ListContainer>
-              <Tabs.List>
-                <Tabs.Tab id="intro">
-                  工具介绍
-                  <Tabs.Indicator />
-                </Tabs.Tab>
-                <Tabs.Tab id="notes">
-                  使用说明
-                  <Tabs.Indicator />
-                </Tabs.Tab>
-              </Tabs.List>
-            </Tabs.ListContainer>
-            <Tabs.Panel id="intro">
-              <h2>关于 {tool.title}</h2>
-              <p>
-                {tool.shortDesc}。这个工具归属于「{category.title}
-                」分类
-                {available
-                  ? '，可在上方工作区使用。'
-                  : '，目前处于目录收录阶段。'}
-              </p>
-              <p>
-                {available
-                  ? '你可以收藏这个工具，或复制链接，方便下次直接打开。'
-                  : '本次版本优先完善站点结构与浏览体验，后续接入独立工具模块后，将在上方呈现实际的输入与结果界面。'}
-              </p>
-              <div className="tool-tags">
-                {tool.tags.map((tag) => (
-                  <Chip key={tag} size="sm" variant="soft">
-                    {tag}
-                  </Chip>
-                ))}
-              </div>
-            </Tabs.Panel>
-            <Tabs.Panel id="notes">
-              <Accordion>
-                <Accordion.Item id="availability">
-                  <Accordion.Heading>
-                    <Accordion.Trigger>
-                      现在可以使用这个工具吗？
-                      <Accordion.Indicator />
-                    </Accordion.Trigger>
-                  </Accordion.Heading>
-                  <Accordion.Panel>
-                    {available
-                      ? '这个工具已接入实际功能，请在上方工作区按模块说明操作。'
-                      : '当前版本提供目录、收藏与工具页面，尚未实现这个工具的实际处理功能。接入后会更新工作区状态。'}
-                  </Accordion.Panel>
-                </Accordion.Item>
-                <Accordion.Item id="storage">
-                  <Accordion.Heading>
-                    <Accordion.Trigger>
-                      收藏和最近记录保存在哪里？
-                      <Accordion.Indicator />
-                    </Accordion.Trigger>
-                  </Accordion.Heading>
-                  <Accordion.Panel>
-                    仅保存在当前浏览器，不会同步到服务器。清除网站数据或切换浏览器后，这些记录不会保留。
-                  </Accordion.Panel>
-                </Accordion.Item>
-              </Accordion>
-            </Tabs.Panel>
-          </Tabs>
         </div>
         <aside className="tool-aside">
           <div className="tool-aside-heading">工具信息</div>
@@ -217,8 +127,8 @@ export function ToolPage() {
               </dd>
             </div>
             <div>
-              <dt>接入状态</dt>
-              <dd>{available ? '已接入' : '计划中'}</dd>
+              <dt>处理位置</dt>
+              <dd>{serverSide ? '服务器' : '当前浏览器'}</dd>
             </div>
             <div>
               <dt>收录日期</dt>
@@ -232,7 +142,7 @@ export function ToolPage() {
             <ItemCard.Content>
               <ItemCard.Title>数据由你掌握</ItemCard.Title>
               <ItemCard.Description>
-                目录浏览无需登录，个人偏好仅在本地保存。
+                每个工具会说明处理位置；收藏和最近记录仅在本机保存。
               </ItemCard.Description>
             </ItemCard.Content>
           </ItemCard>
@@ -246,19 +156,21 @@ export function ToolPage() {
           </a>
         </aside>
       </div>
-      <section className="related-tools">
-        <div className="section-heading">
-          <h2>同一个抽屉里的工具</h2>
-          <Link to={`/category/${category.id}`}>
-            查看全部 <Icon name="ArrowRight" size={14} />
-          </Link>
-        </div>
-        <div className="tools-grid">
-          {related.map((item) => (
-            <ToolCard key={item.id} tool={item} category={category} />
-          ))}
-        </div>
-      </section>
+      {related.length > 0 && (
+        <section className="related-tools">
+          <div className="section-heading">
+            <h2>同一个抽屉里的工具</h2>
+            <Link to={`/category/${category.id}`}>
+              查看全部 <Icon name="ArrowRight" size={14} />
+            </Link>
+          </div>
+          <div className="tools-grid">
+            {related.map((item) => (
+              <ToolCard key={item.id} tool={item} category={category} />
+            ))}
+          </div>
+        </section>
+      )}
     </div>
   )
 }

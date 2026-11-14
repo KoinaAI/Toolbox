@@ -18,6 +18,7 @@ jobs:
     timeout-minutes: 5
     outputs:
       backend: ${{ steps.paths.outputs.backend }}
+      tools: ${{ steps.paths.outputs.tools }}
     steps:
       - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
         with:
@@ -30,12 +31,34 @@ jobs:
           if [[ -z "$BASE_SHA" || "$BASE_SHA" =~ ^0+$ ]]; then
             BASE_SHA=$(git hash-object -t tree /dev/null)
           fi
+          if [[ "$GITHUB_EVENT_NAME" == "pull_request" ]]; then
+            BASE_SHA=$(git merge-base "$BASE_SHA" "$GITHUB_SHA")
+          fi
           git diff --name-only "$BASE_SHA" "$GITHUB_SHA" > /tmp/changed-files
           if grep -Eq '(^cmd/|^internal/|^go\.(mod|sum)$|^\.github/workflows/ci\.yaml$)' /tmp/changed-files; then
             echo 'backend=true' >> "$GITHUB_OUTPUT"
           else
             echo 'backend=false' >> "$GITHUB_OUTPUT"
           fi
+          if grep -Eq '(^web/src/features/tools/|^internal/catalog/catalog\.json$|^web/package\.json$|^package(-lock)?\.json$|^\.github/workflows/ci\.yaml$)' /tmp/changed-files; then
+            echo 'tools=true' >> "$GITHUB_OUTPUT"
+          else
+            echo 'tools=false' >> "$GITHUB_OUTPUT"
+          fi
+  tools:
+    needs: changes
+    if: needs.changes.outputs.tools == 'true'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: '24'
+      - run: npm ci --ignore-scripts --no-fund --no-audit
+      - run: npm run test:tools
   backend:
     needs: changes
     if: needs.changes.outputs.backend == 'true'
@@ -49,7 +72,7 @@ jobs:
         with:
           go-version: 1.26.7
           cache: false
-      - run: go test ./internal/catalog ./internal/httpapi
+      - run: go test ./internal/catalog ./internal/httpapi ./internal/safehttp ./internal/imaging
       - run: go build ./cmd/toolbox
   version-validation:
     if: github.event_name == 'push' && github.ref_type == 'tag' && github.event.created
@@ -67,3 +90,8 @@ jobs:
           cache: false
       - run: go test ./...
       - run: go vet ./...
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: '24'
+      - run: npm ci --ignore-scripts --no-fund --no-audit
+      - run: npm run test:tools

@@ -13,7 +13,7 @@ export interface Tool {
   shortDesc: string
   icon: string
   tags: string[]
-  status: 'planned' | 'available'
+  status: 'available'
   featured: boolean
   addedAt: string
   order: number

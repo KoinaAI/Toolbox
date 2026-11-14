@@ -1,7 +1,7 @@
 {
   "name": "toolbox",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.2.0",
   "workspaces": [
     "web"
   ],
@@ -10,6 +10,7 @@
     "dev:api": "go run ./cmd/toolbox",
     "build": "npm run build --workspace web",
     "check": "npm run check --workspace web",
+    "test:tools": "node --experimental-strip-types --test web/src/features/tools/core/*.test.ts web/src/features/tools/registry.test.ts",
     "setup:pro": "node scripts/setup-pro.mjs",
     "archive:pro": "node scripts/archive-pro.mjs"
   },
@@ -17,6 +18,9 @@
     "node": ">=24.0.0"
   },
   "overrides": {
-    "figlet": "1.11.3"
+    "figlet": "1.11.3",
+    "monaco-editor": {
+      "dompurify": "3.4.17"
+    }
   }
 }

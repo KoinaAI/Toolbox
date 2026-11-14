@@ -6,7 +6,7 @@ import { motion } from 'motion/react'
 import { useApp } from '../../lib/providers'
 import { usePreference } from '../../lib/storage'
 import { Icon } from '../../components/icon'
-import { IconButton, Shortcut } from '../../components/controls'
+import { IconButton } from '../../components/controls'
 import { ToolCard } from '../../components/tool-card'
 import { BlankState, CatalogLoading, NotFound } from '../../components/states'
 import { ToggleGroup, ToggleGroupItem } from '../../components/ui/toggle-group'
@@ -148,8 +148,8 @@ export function CatalogPage({
           maxLength={128}
           autoComplete="off"
         />
-        <InputGroup.Suffix>
-          {query ? (
+        {query && (
+          <InputGroup.Suffix>
             <IconButton
               label="清空搜索"
               icon="Close"
@@ -158,10 +158,8 @@ export function CatalogPage({
                 document.getElementById('catalog-search')?.focus()
               }}
             />
-          ) : (
-            <Shortcut>/</Shortcut>
-          )}
-        </InputGroup.Suffix>
+          </InputGroup.Suffix>
+        )}
       </InputGroup>
     </TextField>
   )
@@ -330,10 +328,6 @@ export function CatalogPage({
               </>
             )}
           </p>
-          <span className="preview-note">
-            <span />
-            站点预览 · 功能待接入
-          </span>
         </div>
         {tools.length ? (
           <div
@@ -344,9 +338,9 @@ export function CatalogPage({
               <ToolCard
                 key={tool.id}
                 tool={tool}
-                category={
-                  catalog.categories.find((c) => c.id === tool.categoryId)!
-                }
+                category={catalog.categories.find(
+                  (c) => c.id === tool.categoryId,
+                )!}
                 layout={layout}
               />
             ))}
