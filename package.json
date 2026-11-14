@@ -1,0 +1,22 @@
+{
+  "name": "toolbox",
+  "private": true,
+  "version": "0.1.0",
+  "workspaces": [
+    "web"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace web",
+    "dev:api": "go run ./cmd/toolbox",
+    "build": "npm run build --workspace web",
+    "check": "npm run check --workspace web",
+    "setup:pro": "node scripts/setup-pro.mjs",
+    "archive:pro": "node scripts/archive-pro.mjs"
+  },
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "overrides": {
+    "figlet": "1.11.3"
+  }
+}

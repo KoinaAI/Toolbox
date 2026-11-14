@@ -1,0 +1,17 @@
+name: toolbox
+services:
+  toolbox:
+    image: ${TOOLBOX_IMAGE:-ghcr.io/koinaai/toolbox:0.1.0}
+    restart: unless-stopped
+    init: true
+    ports:
+      - "${TOOLBOX_BIND:-127.0.0.1}:${TOOLBOX_PORT:-8080}:8080"
+    read_only: true
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    environment:
+      LISTEN_ADDR: ":8080"
+      STATIC_DIR: /app/web
+    stop_grace_period: 15s

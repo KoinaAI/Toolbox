@@ -1,0 +1,715 @@
+{
+  "version": 1,
+  "categories": [
+    {
+      "id": "encoding",
+      "title": "编码转换",
+      "icon": "Binary",
+      "tone": "rose",
+      "description": "让不同格式的数据自由流动",
+      "order": 0
+    },
+    {
+      "id": "development",
+      "title": "开发工具",
+      "icon": "Code2",
+      "tone": "violet",
+      "description": "开发过程中顺手的小帮手",
+      "order": 1
+    },
+    {
+      "id": "text",
+      "title": "文本处理",
+      "icon": "Type",
+      "tone": "blue",
+      "description": "把文字整理成想要的样子",
+      "order": 2
+    },
+    {
+      "id": "image",
+      "title": "图片工具",
+      "icon": "Image",
+      "tone": "teal",
+      "description": "轻量、便捷的图片处理",
+      "order": 3
+    },
+    {
+      "id": "design",
+      "title": "设计工具",
+      "icon": "Palette",
+      "tone": "orange",
+      "description": "给灵感多一点可能",
+      "order": 4
+    },
+    {
+      "id": "network",
+      "title": "网络工具",
+      "icon": "Globe",
+      "tone": "cyan",
+      "description": "看清网络与网站的细节",
+      "order": 5
+    },
+    {
+      "id": "datetime",
+      "title": "时间日期",
+      "icon": "Clock3",
+      "tone": "amber",
+      "description": "轻松处理时间与日期",
+      "order": 6
+    },
+    {
+      "id": "everyday",
+      "title": "生活效率",
+      "icon": "Coffee",
+      "tone": "pink",
+      "description": "解决生活里的小麻烦",
+      "order": 7
+    }
+  ],
+  "tools": [
+    {
+      "id": "base64",
+      "categoryId": "encoding",
+      "title": "Base64 编解码",
+      "shortDesc": "文本与 Base64 编码之间的快速转换",
+      "icon": "Binary",
+      "tags": [
+        "base64",
+        "编码",
+        "解码"
+      ],
+      "status": "planned",
+      "featured": true,
+      "addedAt": "2026-11-14",
+      "order": 0
+    },
+    {
+      "id": "url-encode",
+      "categoryId": "encoding",
+      "title": "URL 编解码",
+      "shortDesc": "处理 URL 中的特殊字符与中文编码",
+      "icon": "Link",
+      "tags": [
+        "url",
+        "uri",
+        "编码"
+      ],
+      "status": "planned",
+      "featured": false,
+      "addedAt": "2026-11-14",
+      "order": 1
+    },
+    {
+      "id": "unicode",
+      "categoryId": "encoding",
+      "title": "Unicode 转换",
+      "shortDesc": "中文、Unicode 与转义字符互相转换",
+      "icon": "Languages",
+      "tags": [
+        "unicode",
+        "中文",
+        "转义"
+      ],
+      "status": "planned",
+      "featured": false,
+      "addedAt": "2026-11-14",
+      "order": 2
+    },
+    {
+      "id": "html-entities",
+      "categoryId": "encoding",
+      "title": "HTML 实体转换",
+      "shortDesc": "在 HTML 实体与普通文本之间转换",
+      "icon": "Braces",
+      "tags": [
+        "html",
+        "实体",
+        "escape"
+      ],
+      "status": "planned",
+      "featured": false,
+      "addedAt": "2026-11-14",
+      "order": 3
+    },
+    {
+      "id": "number-base",
+      "categoryId": "encoding",
+      "title": "进制转换",
+      "shortDesc": "二进制、八进制、十进制与十六进制转换",
+      "icon": "Hash",
+      "tags": [
+        "binary",
+        "hex",
+        "进制"
+      ],
+      "status": "planned",
+      "featured": false,
+      "addedAt": "2026-11-14",
+      "order": 4
+    },
+    {
+      "id": "json",
+      "categoryId": "development",
+      "title": "JSON 格式化",
+      "shortDesc": "格式化、校验与压缩，让 JSON 更好读",
+      "icon": "Braces",
+      "tags": [
+        "json",
+        "格式化",
+        "校验"
+      ],
+      "status": "planned",
+      "featured": true,
+      "addedAt": "2026-11-14",
+      "order": 5
+    },
+    {
+      "id": "regex",
+      "categoryId": "development",
+      "title": "正则表达式",
+      "shortDesc": "测试匹配规则，让复杂的查找更简单",
+      "icon": "Regex",
+      "tags": [
+        "regex",
+        "正则",
+        "匹配"
+      ],
+      "status": "planned",
+      "featured": true,
+      "addedAt": "2026-11-14",
+      "order": 6
+    },
+    {
+      "id": "uuid",
+      "categoryId": "development",
+      "title": "UUID 生成器",
+      "shortDesc": "为你的项目生成独一无二的标识符",
+      "icon": "Fingerprint",
+      "tags": [
+        "uuid",
+        "guid",
+        "唯一标识"
+      ],
+      "status": "planned",
+      "featured": false,
+      "addedAt": "2026-11-14",
+      "order": 7
+    },
+    {
+      "id": "sql-format",
+      "categoryId": "development",
+      "title": "SQL 格式化",
+      "shortDesc": "整理 SQL 缩进，清晰呈现查询结构",
+      "icon": "Database",
+      "tags": [
+        "sql",
+        "格式化",
+        "数据库"
+      ],
+      "status": "planned",
+      "featured": false,
+      "addedAt": "2026-11-14",
+      "order": 8
+    },
+    {
+      "id": "jwt",
+      "categoryId": "development",
+      "title": "JWT 解析",
+      "shortDesc": "查看 Token 的 Header 与 Payload 内容",
+      "icon": "KeyRound",
+      "tags": [
+        "jwt",
+        "token",
+        "认证"
+      ],
+      "status": "planned",
+      "featured": false,
+      "addedAt": "2026-11-14",
+      "order": 9
+    },
+    {
+      "id": "text-diff",
+      "categoryId": "text",
+      "title": "文本对比",
+      "shortDesc": "逐行比较两段文字，快速发现差异",
+      "icon": "GitCompareArrows",
+      "tags": [
+        "diff",
+        "文本",
+        "比较"
+      ],
+      "status": "planned",
+      "featured": false,
+      "addedAt": "2026-11-14",
+      "order": 10
+    },
+    {
+      "id": "word-count",
+      "categoryId": "text",
+      "title": "字数统计",
+      "shortDesc": "统计中英文字数、字符数与段落数量",
+      "icon": "TextCursorInput",
+      "tags": [
+        "字数",
+        "字符",
+        "统计"
+      ],
+      "status": "planned",
+      "featured": false,
+      "addedAt": "2026-11-14",
+      "order": 11
+    },
+    {
+      "id": "case-convert",
+      "categoryId": "text",
+      "title": "大小写转换",
+      "shortDesc": "英文大小写与常用命名风格自由切换",
+      "icon": "CaseSensitive",
+      "tags": [
+        "大小写",
+        "camel",
+        "snake"
+      ],
+      "status": "planned",
+      "featured": false,
+      "addedAt": "2026-11-14",
+      "order": 12
+    },
+    {
+      "id": "text-dedupe",
+      "categoryId": "text",
+      "title": "文本去重",
+      "shortDesc": "去掉重复的行，让内容更干净",
+      "icon": "ListFilter",
+      "tags": [
+        "去重",
+        "重复",
+        "行"
+      ],
+      "status": "planned",
+      "featured": false,
+      "addedAt": "2026-11-14",
+      "order": 13
+    },
+    {
+      "id": "markdown",
+      "categoryId": "text",
+      "title": "Markdown 预览",
+      "shortDesc": "边写边预览，专注于内容本身",
+      "icon": "FileText",
+      "tags": [
+        "markdown",
+        "md",
+        "预览"
+      ],
+      "status": "planned",
+      "featured": false,
+      "addedAt": "2026-11-14",
+      "order": 14
+    },
+    {
+      "id": "image-compress",
+      "categoryId": "image",
+      "title": "图片压缩",
+      "shortDesc": "减小图片体积，让分享和加载更轻快",
+      "icon": "Minimize2",
+      "tags": [
+        "图片",
+        "压缩",
+        "jpg",
+        "png"
+      ],
+      "status": "planned",
+      "featured": false,
+      "addedAt": "2026-11-14",
+      "order": 15
+    },
+    {
+      "id": "image-convert",
+      "categoryId": "image",
+      "title": "图片格式转换",
+      "shortDesc": "在 PNG、JPEG、WebP 等格式间转换",
+      "icon": "Images",
+      "tags": [
+        "图片",
+        "格式",
+        "webp"
+      ],
+      "status": "planned",
+      "featured": false,
+      "addedAt": "2026-11-14",
+      "order": 16
+    },
+    {
+      "id": "image-base64",
+      "categoryId": "image",
+      "title": "图片转 Base64",
+      "shortDesc": "将图片转换为可嵌入页面的 Data URL",
+      "icon": "FileImage",
+      "tags": [
+        "图片",
+        "base64",
+        "data url"
+      ],
+      "status": "planned",
+      "featured": false,
+      "addedAt": "2026-11-14",
+      "order": 17
+    },
+    {
+      "id": "image-resize",
+      "categoryId": "image",
+      "title": "图片尺寸调整",
+      "shortDesc": "按比例缩放，适配不同的使用场景",
+      "icon": "ScanLine",
+      "tags": [
+        "尺寸",
+        "缩放",
+        "resize"
+      ],
+      "status": "planned",
+      "featured": false,
+      "addedAt": "2026-11-14",
+      "order": 18
+    },
+    {
+      "id": "favicon",
+      "categoryId": "image",
+      "title": "Favicon 生成",
+      "shortDesc": "为网站准备清晰、合适的标签页图标",
+      "icon": "AppWindow",
+      "tags": [
+        "favicon",
+        "ico",
+        "图标"
+      ],
+      "status": "planned",
+      "featured": false,
+      "addedAt": "2026-11-14",
+      "order": 19
+    },
+    {
+      "id": "color",
+      "categoryId": "design",
+      "title": "颜色转换",
+      "shortDesc": "在 HEX、RGB 与 HSL 色值之间转换",
+      "icon": "Palette",
+      "tags": [
+        "颜色",
+        "hex",
+        "rgb",
+        "hsl"
+      ],
+      "status": "planned",
+      "featured": true,
+      "addedAt": "2026-11-14",
+      "order": 20
+    },
+    {
+      "id": "gradient",
+      "categoryId": "design",
+      "title": "渐变生成器",
+      "shortDesc": "搭配喜欢的颜色，生成 CSS 渐变",
+      "icon": "Blend",
+      "tags": [
+        "渐变",
+        "gradient",
+        "css"
+      ],
+      "status": "planned",
+      "featured": false,
+      "addedAt": "2026-11-14",
+      "order": 21
+    },
+    {
+      "id": "shadow",
+      "categoryId": "design",
+      "title": "阴影调试器",
+      "shortDesc": "直观调整层次，生成 box-shadow 样式",
+      "icon": "Layers",
+      "tags": [
+        "阴影",
+        "shadow",
+        "css"
+      ],
+      "status": "planned",
+      "featured": false,
+      "addedAt": "2026-11-14",
+      "order": 22
+    },
+    {
+      "id": "contrast",
+      "categoryId": "design",
+      "title": "色彩对比度",
+      "shortDesc": "检查文字与背景的可读性和对比度",
+      "icon": "Contrast",
+      "tags": [
+        "wcag",
+        "对比度",
+        "可访问性"
+      ],
+      "status": "planned",
+      "featured": false,
+      "addedAt": "2026-11-14",
+      "order": 23
+    },
+    {
+      "id": "css-unit",
+      "categoryId": "design",
+      "title": "CSS 单位换算",
+      "shortDesc": "在 px、rem 与 em 之间快速换算",
+      "icon": "Ruler",
+      "tags": [
+        "px",
+        "rem",
+        "em",
+        "单位"
+      ],
+      "status": "planned",
+      "featured": false,
+      "addedAt": "2026-11-14",
+      "order": 24
+    },
+    {
+      "id": "dns",
+      "categoryId": "network",
+      "title": "DNS 查询",
+      "shortDesc": "查询域名常见的 DNS 解析记录",
+      "icon": "Globe",
+      "tags": [
+        "dns",
+        "域名",
+        "解析"
+      ],
+      "status": "planned",
+      "featured": false,
+      "addedAt": "2026-11-14",
+      "order": 25
+    },
+    {
+      "id": "ip",
+      "categoryId": "network",
+      "title": "IP 信息查询",
+      "shortDesc": "查看 IP 地址的基础信息",
+      "icon": "MapPin",
+      "tags": [
+        "ip",
+        "地址",
+        "网络"
+      ],
+      "status": "planned",
+      "featured": false,
+      "addedAt": "2026-11-14",
+      "order": 26
+    },
+    {
+      "id": "http-status",
+      "categoryId": "network",
+      "title": "HTTP 状态码",
+      "shortDesc": "查阅常见状态码及其含义",
+      "icon": "Radio",
+      "tags": [
+        "http",
+        "状态码",
+        "请求"
+      ],
+      "status": "planned",
+      "featured": false,
+      "addedAt": "2026-11-14",
+      "order": 27
+    },
+    {
+      "id": "user-agent",
+      "categoryId": "network",
+      "title": "User-Agent 解析",
+      "shortDesc": "读懂浏览器、系统与设备信息",
+      "icon": "Monitor",
+      "tags": [
+        "ua",
+        "user agent",
+        "浏览器"
+      ],
+      "status": "planned",
+      "featured": false,
+      "addedAt": "2026-11-14",
+      "order": 28
+    },
+    {
+      "id": "url-parser",
+      "categoryId": "network",
+      "title": "URL 解析",
+      "shortDesc": "拆解协议、域名、路径与查询参数",
+      "icon": "Unplug",
+      "tags": [
+        "url",
+        "链接",
+        "参数"
+      ],
+      "status": "planned",
+      "featured": false,
+      "addedAt": "2026-11-14",
+      "order": 29
+    },
+    {
+      "id": "timestamp",
+      "categoryId": "datetime",
+      "title": "时间戳转换",
+      "shortDesc": "Unix 时间戳与日期时间的双向转换",
+      "icon": "Clock3",
+      "tags": [
+        "timestamp",
+        "unix",
+        "时间戳"
+      ],
+      "status": "planned",
+      "featured": true,
+      "addedAt": "2026-11-14",
+      "order": 30
+    },
+    {
+      "id": "date-diff",
+      "categoryId": "datetime",
+      "title": "日期计算器",
+      "shortDesc": "计算两个日期之间相隔的天数",
+      "icon": "CalendarDays",
+      "tags": [
+        "日期",
+        "天数",
+        "差值"
+      ],
+      "status": "planned",
+      "featured": false,
+      "addedAt": "2026-11-14",
+      "order": 31
+    },
+    {
+      "id": "timezone",
+      "categoryId": "datetime",
+      "title": "时区转换",
+      "shortDesc": "对照不同时区，安排跨时区协作",
+      "icon": "Earth",
+      "tags": [
+        "时区",
+        "timezone",
+        "utc"
+      ],
+      "status": "planned",
+      "featured": false,
+      "addedAt": "2026-11-14",
+      "order": 32
+    },
+    {
+      "id": "cron",
+      "categoryId": "datetime",
+      "title": "Cron 表达式",
+      "shortDesc": "理解定时规则，预览计划执行时间",
+      "icon": "Timer",
+      "tags": [
+        "cron",
+        "定时",
+        "计划"
+      ],
+      "status": "planned",
+      "featured": false,
+      "addedAt": "2026-11-14",
+      "order": 33
+    },
+    {
+      "id": "countdown",
+      "categoryId": "datetime",
+      "title": "倒计时",
+      "shortDesc": "为一个值得期待的时刻留出位置",
+      "icon": "Hourglass",
+      "tags": [
+        "倒计时",
+        "计时",
+        "时间"
+      ],
+      "status": "planned",
+      "featured": false,
+      "addedAt": "2026-11-14",
+      "order": 34
+    },
+    {
+      "id": "qrcode",
+      "categoryId": "everyday",
+      "title": "二维码生成",
+      "shortDesc": "将文字和链接整理成二维码",
+      "icon": "QrCode",
+      "tags": [
+        "二维码",
+        "qr",
+        "链接"
+      ],
+      "status": "planned",
+      "featured": true,
+      "addedAt": "2026-11-14",
+      "order": 35
+    },
+    {
+      "id": "unit",
+      "categoryId": "everyday",
+      "title": "单位换算",
+      "shortDesc": "长度、重量、温度等常见单位换算",
+      "icon": "Scale",
+      "tags": [
+        "单位",
+        "长度",
+        "重量",
+        "温度"
+      ],
+      "status": "planned",
+      "featured": false,
+      "addedAt": "2026-11-14",
+      "order": 36
+    },
+    {
+      "id": "random",
+      "categoryId": "everyday",
+      "title": "随机数生成",
+      "shortDesc": "按范围生成随机数字，帮你做个选择",
+      "icon": "Dices",
+      "tags": [
+        "随机",
+        "random",
+        "数字"
+      ],
+      "status": "planned",
+      "featured": false,
+      "addedAt": "2026-11-14",
+      "order": 37
+    },
+    {
+      "id": "password",
+      "categoryId": "everyday",
+      "title": "密码生成器",
+      "shortDesc": "按自选规则生成随机密码",
+      "icon": "LockKeyhole",
+      "tags": [
+        "密码",
+        "password",
+        "随机"
+      ],
+      "status": "planned",
+      "featured": false,
+      "addedAt": "2026-11-14",
+      "order": 38
+    },
+    {
+      "id": "pomodoro",
+      "categoryId": "everyday",
+      "title": "专注番茄钟",
+      "shortDesc": "分配专注与休息时间，找回自己的节奏",
+      "icon": "Focus",
+      "tags": [
+        "番茄钟",
+        "专注",
+        "pomodoro"
+      ],
+      "status": "planned",
+      "featured": false,
+      "addedAt": "2026-11-14",
+      "order": 39
+    }
+  ]
+}

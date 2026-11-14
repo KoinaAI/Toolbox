@@ -1,0 +1,13 @@
+# Optional source-build override. The licensed archive is a BuildKit secret, never an image layer.
+services:
+  toolbox:
+    image: toolbox:local
+    build:
+      context: .
+      args:
+        VCS_REF: ${VCS_REF:-local}
+      secrets:
+        - heroui_pro_package
+secrets:
+  heroui_pro_package:
+    file: ${HEROUI_PRO_ARCHIVE:?Run npm run archive:pro, then export HEROUI_PRO_ARCHIVE to the printed path}
