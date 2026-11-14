@@ -6,7 +6,7 @@
 docker compose up -d
 ```
 
-默认访问 `http://127.0.0.1:8080`。Compose 使用 `ghcr.io/koinaai/toolbox:0.1.0`，可通过 `.env` 的 `TOOLBOX_IMAGE` 改为提交标签或不可变 digest。默认仅绑定本机；需要对外开放时显式设置 `TOOLBOX_BIND=0.0.0.0`，并在前置网关配置 TLS。
+默认访问 `http://127.0.0.1:8080`。Compose 使用 `ghcr.io/koinaai/toolbox:0.2.0`，可通过 `.env` 的 `TOOLBOX_IMAGE` 改为提交标签或不可变 digest。默认仅绑定本机；需要对外开放时显式设置 `TOOLBOX_BIND=0.0.0.0`，并在前置网关配置 TLS。
 
 首次发布的 GHCR 包可能保持私有。若拉取提示未授权，先使用有该包读取权限的账号登录 `docker login ghcr.io`。镜像运行无需 Node.js、HeroUI 凭据、数据库或挂载目录；个人收藏只在浏览器保存。
 

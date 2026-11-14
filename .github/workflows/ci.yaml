@@ -31,6 +31,9 @@ jobs:
           if [[ -z "$BASE_SHA" || "$BASE_SHA" =~ ^0+$ ]]; then
             BASE_SHA=$(git hash-object -t tree /dev/null)
           fi
+          if [[ "$GITHUB_EVENT_NAME" == "pull_request" ]]; then
+            BASE_SHA=$(git merge-base "$BASE_SHA" "$GITHUB_SHA")
+          fi
           git diff --name-only "$BASE_SHA" "$GITHUB_SHA" > /tmp/changed-files
           if grep -Eq '(^cmd/|^internal/|^go\.(mod|sum)$|^\.github/workflows/ci\.yaml$)' /tmp/changed-files; then
             echo 'backend=true' >> "$GITHUB_OUTPUT"

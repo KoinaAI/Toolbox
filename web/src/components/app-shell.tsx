@@ -138,7 +138,7 @@ function SidebarContents() {
               <Icon name="Info" size={17} />
             </Sidebar.MenuIcon>
             <Sidebar.MenuLabel>关于工具箱</Sidebar.MenuLabel>
-            <span className="nav-version">v0.1</span>
+            <span className="nav-version">v0.2</span>
           </Sidebar.MenuItem>
         </Sidebar.Menu>
       </Sidebar.Footer>
