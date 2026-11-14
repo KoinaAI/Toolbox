@@ -76,60 +76,20 @@
       "tags": [
         "base64",
         "编码",
-        "解码"
+        "解码",
+        "Base32",
+        "Base16",
+        "Base36",
+        "Base45",
+        "Base58",
+        "Base62",
+        "Base85",
+        "Base91"
       ],
       "status": "available",
       "featured": true,
       "addedAt": "2026-11-14",
       "order": 0
-    },
-    {
-      "id": "url-encode",
-      "categoryId": "encoding",
-      "title": "URL 编解码",
-      "shortDesc": "处理 URL 中的特殊字符与中文编码",
-      "icon": "Link",
-      "tags": [
-        "url",
-        "uri",
-        "编码"
-      ],
-      "status": "planned",
-      "featured": false,
-      "addedAt": "2026-11-14",
-      "order": 1
-    },
-    {
-      "id": "unicode",
-      "categoryId": "encoding",
-      "title": "Unicode 转换",
-      "shortDesc": "中文、Unicode 与转义字符互相转换",
-      "icon": "Languages",
-      "tags": [
-        "unicode",
-        "中文",
-        "转义"
-      ],
-      "status": "planned",
-      "featured": false,
-      "addedAt": "2026-11-14",
-      "order": 2
-    },
-    {
-      "id": "html-entities",
-      "categoryId": "encoding",
-      "title": "HTML 实体转换",
-      "shortDesc": "在 HTML 实体与普通文本之间转换",
-      "icon": "Braces",
-      "tags": [
-        "html",
-        "实体",
-        "escape"
-      ],
-      "status": "planned",
-      "featured": false,
-      "addedAt": "2026-11-14",
-      "order": 3
     },
     {
       "id": "number-base",
@@ -228,22 +188,6 @@
       "order": 9
     },
     {
-      "id": "text-diff",
-      "categoryId": "text",
-      "title": "文本对比",
-      "shortDesc": "逐行比较两段文字，快速发现差异",
-      "icon": "GitCompareArrows",
-      "tags": [
-        "diff",
-        "文本",
-        "比较"
-      ],
-      "status": "planned",
-      "featured": false,
-      "addedAt": "2026-11-14",
-      "order": 10
-    },
-    {
       "id": "word-count",
       "categoryId": "text",
       "title": "字数统计",
@@ -258,54 +202,6 @@
       "featured": false,
       "addedAt": "2026-11-14",
       "order": 11
-    },
-    {
-      "id": "case-convert",
-      "categoryId": "text",
-      "title": "大小写转换",
-      "shortDesc": "英文大小写与常用命名风格自由切换",
-      "icon": "CaseSensitive",
-      "tags": [
-        "大小写",
-        "camel",
-        "snake"
-      ],
-      "status": "planned",
-      "featured": false,
-      "addedAt": "2026-11-14",
-      "order": 12
-    },
-    {
-      "id": "text-dedupe",
-      "categoryId": "text",
-      "title": "文本去重",
-      "shortDesc": "去掉重复的行，让内容更干净",
-      "icon": "ListFilter",
-      "tags": [
-        "去重",
-        "重复",
-        "行"
-      ],
-      "status": "planned",
-      "featured": false,
-      "addedAt": "2026-11-14",
-      "order": 13
-    },
-    {
-      "id": "markdown",
-      "categoryId": "text",
-      "title": "Markdown 预览",
-      "shortDesc": "边写边预览，专注于内容本身",
-      "icon": "FileText",
-      "tags": [
-        "markdown",
-        "md",
-        "预览"
-      ],
-      "status": "planned",
-      "featured": false,
-      "addedAt": "2026-11-14",
-      "order": 14
     },
     {
       "id": "image-compress",
@@ -374,22 +270,6 @@
       "order": 18
     },
     {
-      "id": "favicon",
-      "categoryId": "image",
-      "title": "Favicon 生成",
-      "shortDesc": "为网站准备清晰、合适的标签页图标",
-      "icon": "AppWindow",
-      "tags": [
-        "favicon",
-        "ico",
-        "图标"
-      ],
-      "status": "planned",
-      "featured": false,
-      "addedAt": "2026-11-14",
-      "order": 19
-    },
-    {
       "id": "color",
       "categoryId": "design",
       "title": "颜色转换",
@@ -405,71 +285,6 @@
       "featured": true,
       "addedAt": "2026-11-14",
       "order": 20
-    },
-    {
-      "id": "gradient",
-      "categoryId": "design",
-      "title": "渐变生成器",
-      "shortDesc": "搭配喜欢的颜色，生成 CSS 渐变",
-      "icon": "Blend",
-      "tags": [
-        "渐变",
-        "gradient",
-        "css"
-      ],
-      "status": "planned",
-      "featured": false,
-      "addedAt": "2026-11-14",
-      "order": 21
-    },
-    {
-      "id": "shadow",
-      "categoryId": "design",
-      "title": "阴影调试器",
-      "shortDesc": "直观调整层次，生成 box-shadow 样式",
-      "icon": "Layers",
-      "tags": [
-        "阴影",
-        "shadow",
-        "css"
-      ],
-      "status": "planned",
-      "featured": false,
-      "addedAt": "2026-11-14",
-      "order": 22
-    },
-    {
-      "id": "contrast",
-      "categoryId": "design",
-      "title": "色彩对比度",
-      "shortDesc": "检查文字与背景的可读性和对比度",
-      "icon": "Contrast",
-      "tags": [
-        "wcag",
-        "对比度",
-        "可访问性"
-      ],
-      "status": "planned",
-      "featured": false,
-      "addedAt": "2026-11-14",
-      "order": 23
-    },
-    {
-      "id": "css-unit",
-      "categoryId": "design",
-      "title": "CSS 单位换算",
-      "shortDesc": "在 px、rem 与 em 之间快速换算",
-      "icon": "Ruler",
-      "tags": [
-        "px",
-        "rem",
-        "em",
-        "单位"
-      ],
-      "status": "planned",
-      "featured": false,
-      "addedAt": "2026-11-14",
-      "order": 24
     },
     {
       "id": "dns",
@@ -616,38 +431,6 @@
       "order": 33
     },
     {
-      "id": "countdown",
-      "categoryId": "datetime",
-      "title": "倒计时",
-      "shortDesc": "为一个值得期待的时刻留出位置",
-      "icon": "Hourglass",
-      "tags": [
-        "倒计时",
-        "计时",
-        "时间"
-      ],
-      "status": "planned",
-      "featured": false,
-      "addedAt": "2026-11-14",
-      "order": 34
-    },
-    {
-      "id": "qrcode",
-      "categoryId": "everyday",
-      "title": "二维码生成",
-      "shortDesc": "将文字和链接整理成二维码",
-      "icon": "QrCode",
-      "tags": [
-        "二维码",
-        "qr",
-        "链接"
-      ],
-      "status": "planned",
-      "featured": true,
-      "addedAt": "2026-11-14",
-      "order": 35
-    },
-    {
       "id": "unit",
       "categoryId": "everyday",
       "title": "单位换算",
@@ -695,22 +478,6 @@
       "featured": false,
       "addedAt": "2026-11-14",
       "order": 38
-    },
-    {
-      "id": "pomodoro",
-      "categoryId": "everyday",
-      "title": "专注番茄钟",
-      "shortDesc": "分配专注与休息时间，找回自己的节奏",
-      "icon": "Focus",
-      "tags": [
-        "番茄钟",
-        "专注",
-        "pomodoro"
-      ],
-      "status": "planned",
-      "featured": false,
-      "addedAt": "2026-11-14",
-      "order": 39
     },
     {
       "id": "id-card",

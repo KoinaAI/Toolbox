@@ -1,6 +1,8 @@
 # 接入一个新工具
 
-## 只添加目录条目
+## 先实现，再加入目录
+
+创建并注册功能模块、完成相关验证后，再把条目加入公开目录。不发布空工作区或计划中占位条目。
 
 编辑 `internal/catalog/catalog.json`，在 `tools` 中添加：
 
@@ -12,7 +14,7 @@
   "shortDesc": "一句话说明这个工具的用途",
   "icon": "Code2",
   "tags": ["example", "示例"],
-  "status": "planned",
+  "status": "available",
   "featured": false,
   "addedAt": "2026-11-14",
   "order": 100
@@ -34,7 +36,7 @@ const loaders: Record<string, Loader> = {
 }
 ```
 
-3. 功能完成并验证后，把该工具的 `status` 改为 `available`。**只有状态为 available 且模块存在，工作区才会执行模块。**
+3. 功能完成并验证后，添加 `available` 目录条目，同时更新 `registry.test.ts` 的预期清单。后端目录拒绝其他状态，前端合约测试检查每个条目都有模块。
 
 模块示例接口：
 
@@ -47,6 +49,8 @@ export default function ExampleTool({ tool }: ToolWorkspaceProps) {
 ```
 
 不要在模块中重复实现导航、收藏或全局主题。模块拥有自己的输入状态，异常由工具级错误边界隔离。需要服务端处理时，在独立 Go 包实现逻辑，向 `internal/httpapi` 注册 `/api/v1/tools/{id}/…` 接口；不要在目录字段中存放待执行代码。
+
+复用 `shared.tsx` 的表单、结果、复制、异常与请求工具。输入/输出默认只保存在组件内存；重任务使用可终止 Worker。服务器请求必须限制大小、并发和时间；出站 HTTP 使用 `internal/safehttp`。每个工作区说明实际处理位置和限制。
 
 ## 最小验证
 

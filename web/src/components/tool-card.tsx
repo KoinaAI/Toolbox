@@ -20,7 +20,7 @@ export function ToolCard({
 }) {
   const { favorites, toggleFavorite } = useApp()
   const saved = favorites.includes(tool.id)
-  const status = isToolAvailable(tool) ? '可使用' : '待接入'
+  const status = isToolAvailable(tool) ? '可使用' : '暂不可用'
   const favorite = (
     <IconButton
       label={saved ? `取消收藏${tool.title}` : `收藏${tool.title}`}

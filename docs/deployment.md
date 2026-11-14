@@ -18,7 +18,7 @@ docker compose down
 
 ## 本地开发
 
-需要 Node.js 24+、Go 1.26.0+。
+需要 Node.js 24+、Go 1.26.0+。图片功能还需要 `ffmpeg` 与 `ffprobe`，FFmpeg 必须包含 mjpeg、png、libwebp、libaom-av1 编码器；部分 Homebrew 精简安装不包含后两项，推荐使用自带完整编解码器的 Docker 镜像。
 
 ```sh
 npm ci --ignore-scripts
@@ -56,7 +56,7 @@ export HEROUI_PRO_ARCHIVE="$PWD/artifacts/heroui-pro-react-1.0.0-beta.11.tgz"
 docker compose -f compose.yaml -f compose.build.yaml up -d --build
 ```
 
-归档是构建 secret，位于 Git 忽略的 `artifacts` 目录；不要上传或提交。Pro 源码只用于构建阶段，最终 scratch 镜像只含 Go 二进制、CA 证书和编译后的页面。
+归档是构建 secret，位于 Git 忽略的 `artifacts` 目录；不要上传或提交。Pro 源码只用于构建阶段。最终镜像使用固定 digest 的 Alpine 3.24，包含固定版本 FFmpeg、Go 二进制、CA 证书与编译页面，不包含 Node.js 或构建凭据。
 
 直接使用官方 token：
 
@@ -75,7 +75,9 @@ docker build --secret id=heroui_auth_token,env=HEROUI_AUTH_TOKEN \
 | `STATIC_DIR` | 本地 `web/dist`，镜像 `/app/web` | 静态目录，符号链接不能越出根目录 |
 | `HEALTHCHECK_URL` | `http://127.0.0.1:8080/healthz` | 自定义端口时供 `-healthcheck` 使用 |
 
-容器以 UID/GID 65532 运行，Compose 启用只读根文件系统、移除全部 capability，并禁用权限提升。镜像自带健康检查，SIGTERM 最多等待 10 秒退出。
+容器以 UID/GID 65532 运行，Compose 启用只读根文件系统、移除全部 capability，并禁用权限提升。`/tmp` 为 256 MiB 的 tmpfs，容器内存限制 1 GiB、进程上限 128；可按实际容量调整。图片处理依赖该可写临时目录，不需要持久化卷。镜像自带健康检查，SIGTERM 最多等待 10 秒退出。
+
+网络工具需要服务器出站 DNS/HTTP/HTTPS。出站 HTTP 不使用代理环境变量，并拒绝专用/保留地址；如果开发机 DNS 使用 Fake-IP，需让服务运行环境使用返回真实公网 IP 的 DNS，不能以关闭 SSRF 防护替代。
 
 ## CI 与后续发布
 

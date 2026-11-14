@@ -10,6 +10,7 @@
     "dev:api": "go run ./cmd/toolbox",
     "build": "npm run build --workspace web",
     "check": "npm run check --workspace web",
+    "test:tools": "node --experimental-strip-types --test web/src/features/tools/core/*.test.ts web/src/features/tools/registry.test.ts",
     "setup:pro": "node scripts/setup-pro.mjs",
     "archive:pro": "node scripts/archive-pro.mjs"
   },

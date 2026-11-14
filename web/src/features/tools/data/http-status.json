@@ -29,7 +29,7 @@
     {
       "code": 104,
       "reason": "Upload Resumption Supported (TEMPORARY - registered 2024-11-13, extension registered 2025-09-15, expires 2026-11-13)",
-      "description": "Upload Resumption Supported (TEMPORARY - registered 2024-11-13, extension registered 2025-09-15, expires 2026-11-13)",
+      "description": "上传恢复支持（临时登记于 2026-11-13 到期，按 IANA 快照保留）",
       "reference": "[draft-ietf-httpbis-resumable-upload-05]"
     },
     {
@@ -257,7 +257,7 @@
     {
       "code": 418,
       "reason": "(Unused)",
-      "description": "保留，未使用（传统称“我是茶壶”）",
+      "description": "保留，未使用（历史名称：I’m a teapot / 我是茶壶）",
       "reference": "[RFC 9110, Section 15.5.19]"
     },
     {

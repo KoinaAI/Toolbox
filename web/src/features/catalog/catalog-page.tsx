@@ -330,10 +330,6 @@ export function CatalogPage({
               </>
             )}
           </p>
-          <span className="preview-note">
-            <span />
-            站点预览 · 功能待接入
-          </span>
         </div>
         {tools.length ? (
           <div
@@ -344,9 +340,9 @@ export function CatalogPage({
               <ToolCard
                 key={tool.id}
                 tool={tool}
-                category={
-                  catalog.categories.find((c) => c.id === tool.categoryId)!
-                }
+                category={catalog.categories.find(
+                  (c) => c.id === tool.categoryId,
+                )!}
                 layout={layout}
               />
             ))}

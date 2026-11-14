@@ -78,7 +78,7 @@ func Load(data []byte) (Catalog, error) {
 		if !slug.MatchString(tool.ID) || tools[tool.ID] || !categories[tool.CategoryID] || strings.TrimSpace(tool.Title) == "" || strings.TrimSpace(tool.ShortDesc) == "" || tool.Icon == "" {
 			return c, fmt.Errorf("invalid tool %q or category reference", tool.ID)
 		}
-		if tool.Status != "planned" && tool.Status != "available" {
+		if tool.Status != "available" {
 			return c, fmt.Errorf("invalid status for %q", tool.ID)
 		}
 		if _, err := time.Parse(time.DateOnly, tool.AddedAt); err != nil {
