@@ -8,6 +8,8 @@ export interface ToolWorkspaceProps {
 type Loader = () => Promise<{ default: ComponentType<ToolWorkspaceProps> }>
 
 const loaders: Record<string, Loader> = {
+  'image-base64': () => import('./modules/base64-image'),
+
   'http-status': () => import('./modules/parsers').then(module => ({ default: module.HTTPStatus })),
   'url-parser': () => import('./modules/parsers').then(module => ({ default: module.URLParser })),
   'user-agent': () => import('./modules/parsers').then(module => ({ default: module.UserAgent })),

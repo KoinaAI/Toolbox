@@ -343,15 +343,16 @@
     {
       "id": "image-base64",
       "categoryId": "image",
-      "title": "图片转 Base64",
-      "shortDesc": "将图片转换为可嵌入页面的 Data URL",
+      "title": "Base64 转图片",
+      "shortDesc": "解码图片 Base64，预览并下载原始图片",
       "icon": "FileImage",
       "tags": [
+        "Base64",
         "图片",
-        "base64",
-        "data url"
+        "解码",
+        "Data URL"
       ],
-      "status": "planned",
+      "status": "available",
       "featured": false,
       "addedAt": "2026-11-14",
       "order": 17
