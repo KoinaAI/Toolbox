@@ -64,7 +64,7 @@ export function AppShell() {
     window.addEventListener('keydown', handle)
     return () => window.removeEventListener('keydown', handle)
   }, [])
-  return <Sidebar.Provider collapsible="none" toggleShortcut={false} navigate={navigate} className="app-frame">
+  return <Sidebar.Provider collapsible="icon" toggleShortcut={false} navigate={navigate} className="app-frame">
     <a className="skip-link" href="#main-content">跳到主要内容</a>
     <Sidebar className="app-sidebar"><SidebarContents /></Sidebar>
     <Sidebar.Mobile className="app-mobile-sidebar"><SidebarContents /></Sidebar.Mobile>
@@ -75,7 +75,7 @@ export function AppShell() {
           <Icon name="Grid" size={17} className="breadcrumb-home" /><span className="breadcrumb-separator">/</span><span className="truncate text-[13px] font-medium">{page}</span>
         </div>
         <div className="flex items-center gap-2">
-          <Button variant="ghost" size="sm" className="command-trigger" onPress={() => setCommandOpen(true)}><Icon name="Search" size={16} /><span>快速查找</span><Shortcut>⌘ K</Shortcut></Button>
+          <Button variant="ghost" size="sm" aria-label="快速查找工具" className="command-trigger" onPress={() => setCommandOpen(true)}><Icon name="Search" size={16} /><span>快速查找</span><Shortcut>⌘ K</Shortcut></Button>
           <span className="topbar-divider" />
           <ThemeMenu />
           <Tooltip delay={400}><a href="https://github.com/KoinaAI/Toolbox" target="_blank" rel="noreferrer" className="header-github" aria-label="在 GitHub 查看源码"><Icon name="Github" size={19} /></a><Tooltip.Content>在 GitHub 查看源码</Tooltip.Content></Tooltip>

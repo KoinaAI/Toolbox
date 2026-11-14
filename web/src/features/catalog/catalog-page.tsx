@@ -25,7 +25,7 @@ export function CatalogPage({ view = 'all' }: { view?: 'all' | 'category' | 'fav
   const query = params.get('q')?.slice(0, 128) || ''
   const deferredQuery = useDeferredValue(query)
   const selectedTab = params.get('tab') === 'featured' ? 'featured' : 'all'
-  const sort = params.get('sort') && params.get('sort')! in sorts ? params.get('sort')! as keyof typeof sorts : 'recommended'
+  const sort = params.get('sort') && Object.hasOwn(sorts, params.get('sort')!) ? params.get('sort')! as keyof typeof sorts : 'recommended'
   const category = catalog?.categories.find(c => c.id === categoryId)
   const setParam = (key: string, value: string) => setParams(previous => { const next = new URLSearchParams(previous); if (value) next.set(key, value); else next.delete(key); return next }, { replace: true })
   const tools = useMemo(() => {

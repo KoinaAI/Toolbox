@@ -400,3 +400,29 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--focus); outline
 }
 @media (max-width: 350px) { .tools-grid { grid-template-columns: 1fr; } .catalog-segments { gap: 8px; } .catalog-segments .segment__item { font-size: 12px; } .welcome h1 { font-size: 31px; } .preview-note { display: none; } }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; } }
+
+/* Keep small copy readable while retaining a compact catalog. */
+@media (min-width: 768px) {
+  .welcome { min-height: 224px; margin-bottom: 22px; }
+  .sidebar__menu-item-content { font-size: 13px; }
+  .sidebar__group-label { font-size: 11px; }
+  .nav-count { font-size: 11px; }
+  .welcome-content > p { font-size: 13px; }
+  .catalog-search input { font-size: 13px; }
+  .search-suggestions, .catalog-summary { font-size: 11px; }
+  .category-filter { font-size: 11px; }
+  .tool-card-content .card__title { font-size: 14px; }
+  .tool-card-content .card__description { font-size: 12px; line-height: 1.8; min-height: 43px; }
+  .category-label { font-size: 10px; }
+  .tool-card-trailing, .preview-note { font-size: 10px; }
+}
+.sidebar-scroll { max-height: none; flex: 1; min-height: 0; }
+@media (max-height: 850px) and (min-width: 768px) { .sidebar-note { display: none; } .sidebar-footer { padding-top: 14px; gap: 0; } }
+@media (max-width: 767px) {
+  .tool-card-content .card__description { font-size: 11px; min-height: 40px; line-height: 1.8; }
+  .tool-card-content .card__title { font-size: 13px; }
+  .catalog-search input { font-size: 12px; }
+  .category-filter { font-size: 11px; }
+  .search-suggestions { font-size: 10px; }
+  .category-label { font-size: 9px; }
+}
