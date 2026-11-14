@@ -5,6 +5,7 @@ import type { Tool, Category } from '../lib/types'
 import { useApp } from '../lib/providers'
 import { Icon } from './icon'
 import { IconButton } from './controls'
+import { isToolAvailable } from '../features/tools/registry'
 
 export function ToolCard({
   tool,
@@ -19,6 +20,7 @@ export function ToolCard({
 }) {
   const { favorites, toggleFavorite } = useApp()
   const saved = favorites.includes(tool.id)
+  const status = isToolAvailable(tool) ? '可使用' : '待接入'
   const favorite = (
     <IconButton
       label={saved ? `取消收藏${tool.title}` : `收藏${tool.title}`}
@@ -44,7 +46,7 @@ export function ToolCard({
           <ItemCard.Description>{tool.shortDesc}</ItemCard.Description>
         </ItemCard.Content>
         <span className="row-category">{category.title}</span>
-        <span className="row-status">待接入</span>
+        <span className="row-status">{status}</span>
         <ItemCard.Action>{favorite}</ItemCard.Action>
       </ItemCard>
     )
@@ -69,7 +71,7 @@ export function ToolCard({
           {category.title}
         </Chip>
         <span className="tool-card-trailing">
-          <span>待接入</span>
+          <span>{status}</span>
           <Icon name="ArrowUpRight" size={15} />
         </span>
       </Card.Footer>

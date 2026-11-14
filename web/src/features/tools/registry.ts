@@ -14,6 +14,11 @@ const modules = new Map<
   LazyExoticComponent<ComponentType<ToolWorkspaceProps>>
 >()
 
+/** A metadata flag alone must never advertise a missing implementation as usable. */
+export function isToolAvailable(tool: Tool) {
+  return tool.status === 'available' && Boolean(loaders[tool.id])
+}
+
 /** Resolves an optional implementation without bundling every tool into the application shell. */
 export function getToolModule(id: string) {
   if (!loaders[id]) return null

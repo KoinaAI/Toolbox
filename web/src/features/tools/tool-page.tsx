@@ -8,7 +8,7 @@ import { Icon } from '../../components/icon'
 import { IconButton } from '../../components/controls'
 import { BlankState, CatalogLoading, NotFound } from '../../components/states'
 import { ToolCard } from '../../components/tool-card'
-import { getToolModule } from './registry'
+import { getToolModule, isToolAvailable } from './registry'
 import { ErrorBoundary } from '../../components/error-boundary'
 
 export function ToolPage() {
@@ -34,7 +34,7 @@ export function ToolPage() {
   const category = catalog.categories.find((c) => c.id === tool.categoryId)!
   const saved = favorites.includes(tool.id)
   const Module = getToolModule(tool.id)
-  const available = tool.status === 'available' && Module !== null
+  const available = isToolAvailable(tool)
   const related = catalog.tools
     .filter((t) => t.categoryId === category.id && t.id !== tool.id)
     .slice(0, 3)
@@ -156,10 +156,15 @@ export function ToolPage() {
               <h2>关于 {tool.title}</h2>
               <p>
                 {tool.shortDesc}。这个工具归属于「{category.title}
-                」分类，目前处于目录收录阶段。
+                」分类
+                {available
+                  ? '，可在上方工作区使用。'
+                  : '，目前处于目录收录阶段。'}
               </p>
               <p>
-                本次版本优先完善站点结构与浏览体验，后续接入独立工具模块后，将在上方呈现实际的输入与结果界面。
+                {available
+                  ? '你可以收藏这个工具，或复制链接，方便下次直接打开。'
+                  : '本次版本优先完善站点结构与浏览体验，后续接入独立工具模块后，将在上方呈现实际的输入与结果界面。'}
               </p>
               <div className="tool-tags">
                 {tool.tags.map((tag) => (
@@ -179,7 +184,9 @@ export function ToolPage() {
                     </Accordion.Trigger>
                   </Accordion.Heading>
                   <Accordion.Panel>
-                    当前版本提供目录、收藏与工具页面，尚未实现这个工具的实际处理功能。接入后会更新工作区状态。
+                    {available
+                      ? '这个工具已接入实际功能，请在上方工作区按模块说明操作。'
+                      : '当前版本提供目录、收藏与工具页面，尚未实现这个工具的实际处理功能。接入后会更新工作区状态。'}
                   </Accordion.Panel>
                 </Accordion.Item>
                 <Accordion.Item id="storage">

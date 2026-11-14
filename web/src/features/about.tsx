@@ -2,9 +2,11 @@ import { Link } from 'react-router-dom'
 import { Card, Chip, Accordion } from '@heroui/react'
 import { Icon } from '../components/icon'
 import { useApp } from '../lib/providers'
+import { isToolAvailable } from './tools/registry'
 
 export function AboutPage() {
   const { catalog } = useApp()
+  const availableCount = catalog?.tools.filter(isToolAvailable).length
   return (
     <article className="about-page">
       <div className="about-eyebrow">
@@ -31,7 +33,7 @@ export function AboutPage() {
           <strong>{catalog?.tools.length ?? '—'}</strong>个工具条目
         </span>
         <span>
-          <strong>0</strong>个已接入功能
+          <strong>{availableCount ?? '—'}</strong>个已接入功能
         </span>
       </div>
       <div className="about-grid">
@@ -76,8 +78,10 @@ export function AboutPage() {
           </Accordion.Heading>
           <Accordion.Panel>
             可以浏览分类与工具、搜索、收藏、查看最近打开记录、切换卡片或列表视图，以及通过
-            ⌘ / Ctrl K
-            快速查找。实际的转换、计算、生成等功能暂未实现，所有工作区均会明确说明状态。
+            ⌘ / Ctrl K 快速查找。
+            {availableCount
+              ? `目前有 ${availableCount} 个工具已接入实际功能，其余工作区会明确标记待接入。`
+              : '实际的转换、计算、生成等功能暂未实现，所有工作区均会明确说明状态。'}
           </Accordion.Panel>
         </Accordion.Item>
         <Accordion.Item id="data">
