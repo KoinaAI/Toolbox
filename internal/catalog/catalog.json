@@ -513,7 +513,7 @@
         "状态码",
         "请求"
       ],
-      "status": "planned",
+      "status": "available",
       "featured": false,
       "addedAt": "2026-11-14",
       "order": 27
@@ -529,7 +529,7 @@
         "user agent",
         "浏览器"
       ],
-      "status": "planned",
+      "status": "available",
       "featured": false,
       "addedAt": "2026-11-14",
       "order": 28
@@ -545,7 +545,7 @@
         "链接",
         "参数"
       ],
-      "status": "planned",
+      "status": "available",
       "featured": false,
       "addedAt": "2026-11-14",
       "order": 29
