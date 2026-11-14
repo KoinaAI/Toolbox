@@ -8,6 +8,10 @@ export interface ToolWorkspaceProps {
 type Loader = () => Promise<{ default: ComponentType<ToolWorkspaceProps> }>
 
 const loaders: Record<string, Loader> = {
+  'random': () => import('./modules/generators').then(module => ({ default: module.RandomNumbers })),
+  'password': () => import('./modules/generators').then(module => ({ default: module.Password })),
+  'uuid': () => import('./modules/generators').then(module => ({ default: module.UUID })),
+
   'timestamp': () => import('./modules/time').then(module => ({ default: module.Timestamp })),
   'date-diff': () => import('./modules/time').then(module => ({ default: module.DateCalculator })),
   'timezone': () => import('./modules/time').then(module => ({ default: module.Timezone })),

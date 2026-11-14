@@ -190,7 +190,7 @@
         "guid",
         "唯一标识"
       ],
-      "status": "planned",
+      "status": "available",
       "featured": false,
       "addedAt": "2026-11-14",
       "order": 7
@@ -674,7 +674,7 @@
         "random",
         "数字"
       ],
-      "status": "planned",
+      "status": "available",
       "featured": false,
       "addedAt": "2026-11-14",
       "order": 37
@@ -690,7 +690,7 @@
         "password",
         "随机"
       ],
-      "status": "planned",
+      "status": "available",
       "featured": false,
       "addedAt": "2026-11-14",
       "order": 38
