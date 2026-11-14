@@ -1,0 +1,12 @@
+node_modules/
+web/dist/
+web/.vite/
+.env
+.env.*
+!.env.example
+*.log
+.DS_Store
+/bin/
+/artifacts/
+/playwright-report/
+/test-results/
