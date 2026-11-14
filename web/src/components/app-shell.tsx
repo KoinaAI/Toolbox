@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { lazy, Suspense, useEffect, useState } from 'react'
 import { Outlet, Link, useLocation, useNavigate } from 'react-router-dom'
 import { Button, Skeleton, Tooltip } from '@heroui/react'
 import { Sidebar } from '@heroui-pro/react/sidebar'
@@ -6,7 +6,9 @@ import { useApp } from '../lib/providers'
 import { Icon } from './icon'
 import { Shortcut } from './controls'
 import { ThemeMenu } from './theme-menu'
-import { CommandPalette } from './command-palette'
+import { CatalogLoading } from './states'
+
+const CommandPalette = lazy(() => import('./command-palette').then(module => ({ default: module.CommandPalette })))
 
 function SidebarContents() {
   const { catalog, favorites, recent } = useApp()
@@ -81,9 +83,9 @@ export function AppShell() {
           <Tooltip delay={400}><a href="https://github.com/KoinaAI/Toolbox" target="_blank" rel="noreferrer" className="header-github" aria-label="在 GitHub 查看源码"><Icon name="Github" size={19} /></a><Tooltip.Content>在 GitHub 查看源码</Tooltip.Content></Tooltip>
         </div>
       </header>
-      <main id="main-content" tabIndex={-1} className="main-content"><Outlet /></main>
+      <main id="main-content" tabIndex={-1} className="main-content"><Suspense fallback={<CatalogLoading />}><Outlet /></Suspense></main>
       <footer className="page-footer"><span>乱七八糟工具箱 <span className="footer-dot">·</span> 让日常，更顺手。</span><Link to="/about">用心整理，持续生长 <Icon name="ArrowUpRight" size={13} /></Link></footer>
     </div>
-    <CommandPalette isOpen={commandOpen} onOpenChange={setCommandOpen} />
+    <Suspense fallback={null}>{commandOpen && <CommandPalette isOpen={commandOpen} onOpenChange={setCommandOpen} />}</Suspense>
   </Sidebar.Provider>
 }
