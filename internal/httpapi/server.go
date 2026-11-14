@@ -70,9 +70,16 @@ func New(c catalog.Catalog, staticDir string) http.Handler {
 		writeJSON(w, r, t)
 	})
 	mux.HandleFunc("GET /api/", func(w http.ResponseWriter, r *http.Request) { fail(w, 404, "not_found", "接口不存在") })
-	root := os.DirFS(staticDir)
-	files := http.FileServer(http.FS(root))
 	mux.HandleFunc("GET /", func(w http.ResponseWriter, r *http.Request) {
+		// OpenRoot confines symlink resolution as well as ordinary path traversal.
+		staticRoot, err := os.OpenRoot(staticDir)
+		if err != nil {
+			fail(w, 503, "frontend_not_built", "前端尚未构建，请运行 npm run build")
+			return
+		}
+		defer staticRoot.Close()
+		root := staticRoot.FS()
+		files := http.FileServer(http.FS(root))
 		clean := strings.TrimPrefix(path.Clean("/"+r.URL.Path), "/")
 		if strings.HasPrefix(clean, "assets/") {
 			if info, err := fs.Stat(root, clean); err != nil || info.IsDir() {
