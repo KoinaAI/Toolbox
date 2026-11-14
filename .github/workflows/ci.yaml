@@ -1,0 +1,69 @@
+name: CI
+on:
+  push:
+    branches: [main, 'codex/**']
+    tags: ['v*']
+  pull_request:
+    types: [opened, synchronize, reopened, edited]
+  merge_group:
+permissions:
+  contents: read
+concurrency:
+  group: ci-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.ref_type != 'tag' }}
+jobs:
+  changes:
+    if: github.ref_type != 'tag'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    outputs:
+      backend: ${{ steps.paths.outputs.backend }}
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - id: paths
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.merge_group.base_sha || github.event.before }}
+        run: |
+          if [[ -z "$BASE_SHA" || "$BASE_SHA" =~ ^0+$ ]]; then
+            BASE_SHA=$(git hash-object -t tree /dev/null)
+          fi
+          git diff --name-only "$BASE_SHA" "$GITHUB_SHA" > /tmp/changed-files
+          if grep -Eq '(^cmd/|^internal/|^go\.(mod|sum)$|^\.github/workflows/ci\.yaml$)' /tmp/changed-files; then
+            echo 'backend=true' >> "$GITHUB_OUTPUT"
+          else
+            echo 'backend=false' >> "$GITHUB_OUTPUT"
+          fi
+  backend:
+    needs: changes
+    if: needs.changes.outputs.backend == 'true'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-go@924ae3a1cded613372ab5595356fb5720e22ba16 # v6
+        with:
+          go-version: 1.26.7
+          cache: false
+      - run: go test ./internal/catalog ./internal/httpapi
+      - run: go build ./cmd/toolbox
+  version-validation:
+    if: github.event_name == 'push' && github.ref_type == 'tag' && github.event.created
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - name: Check version syntax
+        run: '[[ "$GITHUB_REF_NAME" =~ ^v[0-9]+\.[0-9]+\.[0-9]+(-[0-9A-Za-z.-]+)?$ ]]'
+      - uses: actions/setup-go@924ae3a1cded613372ab5595356fb5720e22ba16 # v6
+        with:
+          go-version: 1.26.7
+          cache: false
+      - run: go test ./...
+      - run: go vet ./...
