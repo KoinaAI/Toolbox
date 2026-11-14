@@ -8,6 +8,9 @@ export interface ToolWorkspaceProps {
 type Loader = () => Promise<{ default: ComponentType<ToolWorkspaceProps> }>
 
 const loaders: Record<string, Loader> = {
+  dns: () => import('./modules/network'),
+  ip: () => import('./modules/network'),
+  'http-client': () => import('./modules/network'),
   'regex': () => import('./modules/regex'),
 
   'image-base64': () => import('./modules/base64-image'),

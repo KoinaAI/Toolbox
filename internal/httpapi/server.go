@@ -18,6 +18,7 @@ import (
 // New builds a same-origin handler. A missing frontend build returns 503, never a fake page.
 func New(c catalog.Catalog, staticDir string) http.Handler {
 	mux := http.NewServeMux()
+	networkRoutes(mux)
 	writeJSON := func(w http.ResponseWriter, r *http.Request, value any) {
 		payload, err := json.Marshal(value)
 		if err != nil {

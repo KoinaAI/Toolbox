@@ -482,7 +482,7 @@
         "域名",
         "解析"
       ],
-      "status": "planned",
+      "status": "available",
       "featured": false,
       "addedAt": "2026-11-14",
       "order": 25
@@ -498,7 +498,7 @@
         "地址",
         "网络"
       ],
-      "status": "planned",
+      "status": "available",
       "featured": false,
       "addedAt": "2026-11-14",
       "order": 26
@@ -727,6 +727,24 @@
       "featured": false,
       "addedAt": "2026-11-14",
       "order": 410
+    },
+    {
+      "id": "http-client",
+      "categoryId": "network",
+      "title": "在线 GET / POST",
+      "shortDesc": "发送公网 HTTP 请求，查看状态、响应头与响应体",
+      "icon": "Globe",
+      "tags": [
+        "HTTP",
+        "GET",
+        "POST",
+        "API",
+        "请求"
+      ],
+      "status": "available",
+      "featured": false,
+      "addedAt": "2026-11-14",
+      "order": 420
     }
   ]
 }
